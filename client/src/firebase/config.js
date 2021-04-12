@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import 'firebase/firebase-storage';
 import 'firebase/firebase-firestore';
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   projectId: process.env.REACT_APP_PROJECT_ID,
@@ -15,7 +15,5 @@ firebase.initializeApp(firebaseConfig);
 
 const appStorage = firebase.storage();
 const appFirestore = firebase.firestore();
-
-console.log('firestore', appFirestore)
 
 export { appStorage, appFirestore };

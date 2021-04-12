@@ -1,13 +1,15 @@
-import { appFirestore } from './firebase/config';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { appFirestore } from "./firebase/config";
+import HomeView from './views/HomeView';
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-       
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={HomeView} />
+      </Switch>
+    </Router>
   );
 }
 
