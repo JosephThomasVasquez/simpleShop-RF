@@ -1,4 +1,4 @@
-
+import { appFirestore } from './firebase/config';
 import './App.css';
 
 function App() {
