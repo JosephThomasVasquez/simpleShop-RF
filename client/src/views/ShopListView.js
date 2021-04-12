@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { appFirestore } from "../firebase/config";
+import FirestoreGetCollection from '../components/firebase/FirestoreGetCollection';
 import data from "../data/data";
 
 const ShopListView = () => {
   const [shopItemsList, setShopItemsList] = useState([...data]);
+  const { firestoreDocs } = FirestoreGetCollection("shoppingLists")
   console.log(shopItemsList);
 
   return (

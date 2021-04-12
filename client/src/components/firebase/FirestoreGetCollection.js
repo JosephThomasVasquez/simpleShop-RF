@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import appFirestore from "../../firebase/config";
+import { appFirestore } from "../../firebase/config";
 
 const FirestoreGetCollection = (collection) => {
   const [firestoreDocs, setFirestoreDocs] = useState([]);
@@ -14,10 +14,10 @@ const FirestoreGetCollection = (collection) => {
         });
 
         setFirestoreDocs(documents);
-        console.log('firestore documents >', documents);
+        console.log("firestore documents >", documents);
       });
 
-      return () => unSubscribe();
+    return () => unSubscribe();
   }, [collection]);
 
   return { firestoreDocs };
