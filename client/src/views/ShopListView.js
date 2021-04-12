@@ -5,22 +5,29 @@ import data from "../data/data";
 
 const ShopListView = () => {
   const [shopItemsList, setShopItemsList] = useState([...data]);
-  const { firestoreDocs } = FirestoreGetCollection("shoppingLists");
-  console.log(shopItemsList);
+  const { firestoreDocs } = FirestoreGetCollection(
+    "users",
+    "yWhkLb4vW3wR5SpmSha6"
+  );
+  // console.log(shopItemsList);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "item") {
       setShopItemsList({ ...shopItemsList, item: value });
     }
+    console.log("firestoreDocs", firestoreDocs);
   };
 
   const handleAddItem = (e) => {
     e.preventDefault();
 
     console.log("items:", shopItemsList);
-    
   };
+
+  const addToFirestore = (e) => {
+    e.preventDefault();
+  }
 
   return (
     <div>
@@ -44,6 +51,9 @@ const ShopListView = () => {
             </Form>
           </Col>
           <Col md={2}>{JSON.stringify(shopItemsList)}</Col>
+          <Button variant="primary" type="submit" onSubmit={addToFirestore}>
+            Add to Firestore
+          </Button>
         </Row>
       </Container>
     </div>
