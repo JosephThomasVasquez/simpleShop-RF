@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { appFirestore } from "../firebase/config";
 
 const ShopListView = () => {
+  const [shopItemsList, setShopItemsList] = useState([{}]);
+
   return (
     <div>
       <Container>
