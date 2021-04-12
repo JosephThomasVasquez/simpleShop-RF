@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { appFirestore } from "../firebase/config";
+import data from '../data/data';
 
 const ShopListView = () => {
-  const [shopItemsList, setShopItemsList] = useState([{}]);
+  const [shopItemsList, setShopItemsList] = useState([...data]);
+  console.log(shopItemsList);
 
   return (
     <div>
       <Container>
+      <h1 className="pt-5">Shopping List</h1>
         <Row>
-          <h1>Shopping List</h1>
+          
           <Col md={8}>
             <Form>
               <Form.Group controlId="addItemInput">
@@ -21,6 +24,7 @@ const ShopListView = () => {
               </Button>
             </Form>
           </Col>
+          <Col md={2}>{JSON.stringify(shopItemsList)}</Col>
         </Row>
       </Container>
     </div>
