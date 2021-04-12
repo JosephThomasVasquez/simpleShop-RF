@@ -6,7 +6,7 @@ const FirestoreGetCollection = (collection, docId) => {
 
   useEffect(() => {
     const unSubscribe = appFirestore
-      .collection(collection).doc(docId).collection('shoppingLists')
+      .collection(collection)
       .onSnapshot((snap) => {
         console.log('snap', snap);
         let documents = [];

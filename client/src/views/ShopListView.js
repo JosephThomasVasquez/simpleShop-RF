@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import FirestoreGetCollection from "../components/firebase/FirestoreGetCollection";
+import { appFirestore } from "../firebase/config";
 import data from "../data/data";
 
 const ShopListView = () => {
-  const [shopItemsList, setShopItemsList] = useState([...data]);
+  const [shopItemsList, setShopItemsList] = useState([]);
   const { firestoreDocs } = FirestoreGetCollection(
     "users",
-    "yWhkLb4vW3wR5SpmSha6"
+    "Kxg6FWVE1CMpNGmCgUQk"
   );
   // console.log(shopItemsList);
 
@@ -25,9 +26,23 @@ const ShopListView = () => {
     console.log("items:", shopItemsList);
   };
 
-  const addToFirestore = (e) => {
+  const addToFirestore = async (e) => {
     e.preventDefault();
-  }
+    console.log('test')
+
+    const fakeId = "yxh123898sfsfj";
+
+    const docRef = await appFirestore
+      .collection("users/Kxg6FWVE1CMpNGmCgUQk/shoppingLists")
+      .add({
+        id: fakeId,
+        name: data[0].name,
+        category: data[0].category,
+        type: data[0].type,
+        count: data[0].count,
+      });
+    const getDoc = await console.log(docRef.get());
+  };
 
   return (
     <div>
@@ -51,7 +66,7 @@ const ShopListView = () => {
             </Form>
           </Col>
           <Col md={2}>{JSON.stringify(shopItemsList)}</Col>
-          <Button variant="primary" type="submit" onSubmit={addToFirestore}>
+          <Button variant="primary" type="button" onClick={addToFirestore}>
             Add to Firestore
           </Button>
         </Row>
