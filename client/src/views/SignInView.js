@@ -15,7 +15,8 @@ const SignInView = () => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-  }
+    setSignInDetails({ name: "", email: "" });
+  };
 
   return (
     <div>
@@ -30,6 +31,7 @@ const SignInView = () => {
                   type="email"
                   name="email"
                   placeholder="email"
+                  value={signInDetails.email}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -39,6 +41,7 @@ const SignInView = () => {
                   type="password"
                   name="password"
                   placeholder="password"
+                  value={signInDetails.password}
                   onChange={handleChange}
                 />
               </Form.Group>
