@@ -48,6 +48,11 @@ const SignInView = () => {
               <Button variant="primary" type="submit">
                 Sign In
               </Button>
+              <div>
+                <Button variant="primary" type="submit" className="mt-2">
+                  Sign In with Google
+                </Button>
+              </div>
             </Form>
           </Col>
         </Row>
