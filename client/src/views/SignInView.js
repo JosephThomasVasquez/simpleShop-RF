@@ -13,13 +13,17 @@ const SignInView = () => {
     setSignInDetails({ ...signInDetails, [name]: value });
   };
 
+  const handleSignIn = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <div>
       <Container>
         <h1 className="pt-5">Sign In</h1>
         <Row>
           <Col md={12}>
-            <Form onSubmit="">
+            <Form onSubmit={handleSignIn}>
               <Form.Group controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
