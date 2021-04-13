@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import Header from "../components/Header";
 import FirestoreGetCollection from "../components/firebase/FirestoreGetCollection";
 import { appFirestore } from "../firebase/config";
 import data from "../data/data";
@@ -46,6 +47,7 @@ const ShopListView = () => {
 
   return (
     <div>
+      <Header />
       <Container>
         <h1 className="pt-5">Shopping List</h1>
         <Row>
