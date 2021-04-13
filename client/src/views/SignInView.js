@@ -7,6 +7,12 @@ const SignInView = () => {
     password: "",
   });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setSignInDetails({ ...signInDetails, [name]: value });
+  };
+
   return (
     <div>
       <Container>
@@ -16,7 +22,12 @@ const SignInView = () => {
             <Form onSubmit="">
               <Form.Group controlId="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" name="email" placeholder="email" />
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="email"
+                  onChange={handleChange}
+                />
               </Form.Group>
               <Form.Group controlId="password">
                 <Form.Label>Oassword</Form.Label>
@@ -24,6 +35,7 @@ const SignInView = () => {
                   type="password"
                   name="password"
                   placeholder="password"
+                  onChange={handleChange}
                 />
               </Form.Group>
               <Button variant="primary" type="submit">
