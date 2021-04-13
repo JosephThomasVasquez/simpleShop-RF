@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
-import 'firebase/firebase-storage';
-import 'firebase/firebase-firestore';
+import "firebase/firebase-storage";
+import "firebase/firebase-firestore";
+import "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -13,8 +14,22 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+const auth = firebase.auth();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+const signInWithGoogle = () => {
+  auth
+    .signInWithPopup(googleProvider)
+    .then((res) => {
+      console.log(res.user);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};
+
 const appStorage = firebase.storage();
 const appFirestore = firebase.firestore();
 const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 
-export { appStorage, appFirestore, timestamp };
+export { auth, signInWithGoogle, appStorage, appFirestore, timestamp };
