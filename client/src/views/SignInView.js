@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 const SignInView = () => {
+  const [signInDetails, setSignInDetails] = useState({
+    email: "",
+    password: "",
+  });
+
   return (
     <div>
       <Container>
