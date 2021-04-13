@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import Header from "../components/Header";
 
 const SignInView = () => {
   const [signInDetails, setSignInDetails] = useState({
@@ -20,6 +21,7 @@ const SignInView = () => {
 
   return (
     <div>
+        <Header />
       <Container>
         <h1 className="pt-5">Sign In</h1>
         <Row>
