@@ -42,7 +42,7 @@ const ShopListView = () => {
         type: data[0].type,
         count: data[0].count,
       });
-    const getDoc = await console.log(docRef.get());
+    await console.log('getDoc', docRef.get());
   };
 
   return (
