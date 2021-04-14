@@ -13,7 +13,6 @@ const Header = () => {
             <Nav.Link href="/shoppinglist">ShoppingList</Nav.Link>
             <NavDropdown title="Dashboard" id="basic-nav-dropdown">
               <NavDropdown.Item href="/signin">Sign In</NavDropdown.Item>
-              <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/signout">Sign Out</NavDropdown.Item>
             </NavDropdown>
