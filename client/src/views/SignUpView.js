@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
 
@@ -16,7 +16,7 @@ const SignUpView = () => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    setSignInDetails({ name: "", email: "" });
+    setSignUpDetails({ name: "", email: "" });
   };
   return (
     <div>
@@ -32,7 +32,7 @@ const SignUpView = () => {
                   type="email"
                   name="email"
                   placeholder="email"
-                  value={signInDetails.email}
+                  value={signUpDetails.email}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -42,7 +42,7 @@ const SignUpView = () => {
                   type="password"
                   name="password"
                   placeholder="password"
-                  value={signInDetails.password}
+                  value={signUpDetails.password}
                   onChange={handleChange}
                 />
               </Form.Group>
