@@ -10,11 +10,12 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="shoppinglist">ShoppingList</Nav.Link>
+            <Nav.Link href="/shoppinglist">ShoppingList</Nav.Link>
             <NavDropdown title="Dashboard" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+              <NavDropdown.Item href="/signin">Sign In</NavDropdown.Item>
+              <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.2">Sign Out</NavDropdown.Item>
+              <NavDropdown.Item href="/signout">Sign Out</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
