@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
 
@@ -47,13 +48,9 @@ const SignUpView = () => {
                 />
               </Form.Group>
               <Button variant="primary" type="submit">
-                Sign In
+                Sign Up
               </Button>
-              <div>
-                <Button variant="primary" type="submit" className="mt-2">
-                  Sign In with Google
-                </Button>
-              </div>
+              <Link to="/signin" className="ml-3">Already have an Account?</Link>
             </Form>
           </Col>
         </Row>
