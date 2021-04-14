@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { signInWithGoogle } from "../firebase/config";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
 
@@ -51,7 +52,7 @@ const SignInView = () => {
                 Sign In
               </Button>
               <div>
-                <Button variant="primary" type="submit" className="mt-2">
+                <Button variant="primary" type="submit" className="mt-2" onClick={signInWithGoogle}>
                   Sign In with Google
                 </Button>
               </div>

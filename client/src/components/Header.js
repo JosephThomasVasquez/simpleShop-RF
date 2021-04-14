@@ -14,7 +14,7 @@ const Header = () => {
             <NavDropdown title="Dashboard" id="basic-nav-dropdown">
               <NavDropdown.Item href="/signin">Sign In</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/signout">Sign Out</NavDropdown.Item>
+              <NavDropdown.Item href="/">Sign Out</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
