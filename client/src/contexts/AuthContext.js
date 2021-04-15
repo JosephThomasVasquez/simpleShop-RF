@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
     return unSubscribe;
   }, [currentUser]);
 
-  const authValue = { currentUser, signup };
+  const authValue = { currentUser, signUp };
 
   return (
     <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>

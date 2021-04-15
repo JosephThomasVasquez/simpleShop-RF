@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import './bootstrap.min.css';
+import "./bootstrap.min.css";
+import AuthProvider from "./contexts/AuthContext";
 import HomeView from "./views/HomeView";
 import SignInView from "./views/SignInView";
 import SignUpView from "./views/SignUpView";
@@ -8,14 +9,16 @@ import "./App.css";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={HomeView} />
-        <Route exact path="/signin" component={SignInView} />
-        <Route exact path="/signup" component={SignUpView} />
-        <Route exact path="/shoppinglist" component={ShopListView} />
-      </Switch>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={HomeView} />
+          <Route exact path="/signin" component={SignInView} />
+          <Route exact path="/signup" component={SignUpView} />
+          <Route exact path="/shoppinglist" component={ShopListView} />
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 }
 

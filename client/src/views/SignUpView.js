@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
@@ -50,7 +51,9 @@ const SignUpView = () => {
               <Button variant="primary" type="submit">
                 Sign Up
               </Button>
-              <Link to="/signin" className="ml-3">Already have an Account?</Link>
+              <Link to="/signin" className="ml-3">
+                Already have an Account?
+              </Link>
             </Form>
           </Col>
         </Row>
