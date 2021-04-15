@@ -25,11 +25,7 @@ const SignUpView = () => {
 
     try {
       await setSignUpDetails({ email: "", password: "" });
-    } catch (error) {
-      
-    }
-
-    
+    } catch (error) {}
   };
   return (
     <div>
@@ -44,7 +40,7 @@ const SignUpView = () => {
                 <Form.Control
                   type="email"
                   name="email"
-                  placeholder="email"
+                  placeholder="Enter your email address"
                   value={signUpDetails.email}
                   onChange={handleChange}
                 />
@@ -54,8 +50,18 @@ const SignUpView = () => {
                 <Form.Control
                   type="password"
                   name="password"
-                  placeholder="password"
+                  placeholder="Enter a Password"
                   value={signUpDetails.password}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+              <Form.Group controlId="confirmPassword">
+                <Form.Label>Oassword</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  value={signUpDetails.confirmPassword}
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -66,6 +72,7 @@ const SignUpView = () => {
                 Already have an Account?
               </Link>
             </Form>
+            {JSON.stringify(signUpDetails)}
           </Col>
         </Row>
       </Container>
