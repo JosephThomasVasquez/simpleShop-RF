@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
@@ -10,6 +10,8 @@ const SignUpView = () => {
     password: "",
   });
 
+  const [signUpError, setSignUpError] = useState();
+
   const { signUp } = useAuth;
 
   const handleChange = (e) => {
@@ -18,9 +20,16 @@ const SignUpView = () => {
     setSignUpDetails({ ...signUpDetails, [name]: value });
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
-    setSignUpDetails({ name: "", email: "" });
+
+    try {
+      await setSignUpDetails({ email: "", password: "" });
+    } catch (error) {
+      
+    }
+
+    
   };
   return (
     <div>
