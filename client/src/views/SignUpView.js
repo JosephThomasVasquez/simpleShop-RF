@@ -10,13 +10,15 @@ const SignUpView = () => {
     password: "",
   });
 
+  const { signUp } = useAuth;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setSignUpDetails({ ...signUpDetails, [name]: value });
   };
 
-  const handleSignIn = (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
     setSignUpDetails({ name: "", email: "" });
   };
@@ -27,7 +29,7 @@ const SignUpView = () => {
         <h1 className="pt-5">Sign Up</h1>
         <Row>
           <Col md={12}>
-            <Form onSubmit={handleSignIn}>
+            <Form onSubmit={handleSignUp}>
               <Form.Group controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
