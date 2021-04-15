@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { auth } from "../firebase/config";
 
 const AuthContext = React.createContext();
-
 
 // Use the React context hook
 export const useAuth = () => {
@@ -14,10 +13,18 @@ const AuthProvider = ({ children }) => {
 
   // Create a new user with email and password
   const signUp = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password)
-  }
+    return auth.createUserWithEmailAndPassword(email, password);
+  };
 
-  const authValue = { currentUser };
+  useEffect(() => {
+    const unSubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser = user;
+    });
+
+    return unSubscribe;
+  }, [currentUser]);
+
+  const authValue = { currentUser, signup };
 
   return (
     <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
