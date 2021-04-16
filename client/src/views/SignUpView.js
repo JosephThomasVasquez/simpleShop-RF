@@ -46,6 +46,7 @@ const SignUpView = () => {
       <Header />
       <Container>
         <h1 className="pt-5">Sign Up</h1>
+        {currentUser}
         <Row>
           <Col md={12}>
             <Form onSubmit={handleSignUp}>
