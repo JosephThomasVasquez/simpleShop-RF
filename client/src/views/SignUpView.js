@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
@@ -8,6 +8,7 @@ const SignUpView = () => {
   const [signUpDetails, setSignUpDetails] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   const [signUpError, setSignUpError] = useState();
@@ -23,9 +24,18 @@ const SignUpView = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
+    if (signUpDetails.password !== signUpDetails.confirmPassword) {
+      setSignUpError("Passwords do not match!");
+    }
+
     try {
       await setSignUpDetails({ email: "", password: "" });
-    } catch (error) {}
+      setSignUpError("");
+    } catch (error) {
+      setSignUpError(
+        "Error creating account. Please check email and passwords."
+      );
+    }
   };
   return (
     <div>
@@ -46,7 +56,7 @@ const SignUpView = () => {
                 />
               </Form.Group>
               <Form.Group controlId="password">
-                <Form.Label>Oassword</Form.Label>
+                <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
                   name="password"
@@ -56,7 +66,7 @@ const SignUpView = () => {
                 />
               </Form.Group>
               <Form.Group controlId="confirmPassword">
-                <Form.Label>Oassword</Form.Label>
+                <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
                   name="confirmPassword"
