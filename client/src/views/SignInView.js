@@ -8,12 +8,22 @@ const SignInView = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const [signUpError, setSignUpError] = useState("");
+  const [signInError, setSignInError] = useState("");
 
-  const { signUp, currentUser } = useAuth();
+  const { signIn } = useAuth();
 
-  const handleSignIn = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
+
+    try {
+      setSignInError("");
+      await signIn(emailRef.current.value, passwordRef.current.value);
+    } catch (error) {
+      setSignInError(
+        "Error logging in. Please check email and password."
+      );
+      console.log("Login Error", signInError);
+    }
   };
 
   return (
