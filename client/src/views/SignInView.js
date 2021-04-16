@@ -53,19 +53,22 @@ const SignInView = () => {
                   ref={passwordRef}
                 />
               </Form.Group>
-              <Button variant="primary" type="submit">
-                Sign In
-              </Button>
-              <div>
+              <Row className="ml-auto">
+                <Button variant="primary" type="submit">
+                  Sign In
+                </Button>
                 <Button
                   variant="primary"
                   type="submit"
-                  className="mt-2"
+                  className="ml-2"
                   onClick={signInWithGoogle}
                 >
                   Sign In with Google
                 </Button>
-              </div>
+                <Link to="/signup" className="mr-3 ml-auto">
+                  Need an account?
+                </Link>
+              </Row>
             </Form>
           </Col>
         </Row>
