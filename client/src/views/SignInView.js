@@ -1,23 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { signInWithGoogle } from "../firebase/config";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
 
 const SignInView = () => {
-  const [signInDetails, setSignInDetails] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setSignInDetails({ ...signInDetails, [name]: value });
-  };
+  const emailRef = useRef();
+  const passwordRef = useRef();
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    setSignInDetails({ name: "", email: "" });
   };
 
   return (
@@ -28,31 +19,34 @@ const SignInView = () => {
         <Row>
           <Col md={12}>
             <Form onSubmit={handleSignIn}>
-              <Form.Group controlId="email">
+              <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
                   name="email"
                   placeholder="email"
-                  value={signInDetails.email}
-                  onChange={handleChange}
+                  ref={emailRef}
                 />
               </Form.Group>
-              <Form.Group controlId="password">
-                <Form.Label>Oassword</Form.Label>
+              <Form.Group id="password">
+                <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
                   name="password"
                   placeholder="password"
-                  value={signInDetails.password}
-                  onChange={handleChange}
+                  ref={passwordRef}
                 />
               </Form.Group>
               <Button variant="primary" type="submit">
                 Sign In
               </Button>
               <div>
-                <Button variant="primary" type="submit" className="mt-2" onClick={signInWithGoogle}>
+                <Button
+                  variant="primary"
+                  type="submit"
+                  className="mt-2"
+                  onClick={signInWithGoogle}
+                >
                   Sign In with Google
                 </Button>
               </div>

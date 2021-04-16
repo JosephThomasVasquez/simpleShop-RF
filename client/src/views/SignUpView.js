@@ -9,21 +9,9 @@ const SignUpView = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
 
-  const [signUpDetails, setSignUpDetails] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
   const [signUpError, setSignUpError] = useState("");
 
   const { signUp, currentUser } = useAuth();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setSignUpDetails({ ...signUpDetails, [name]: value });
-  };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -32,9 +20,7 @@ const SignUpView = () => {
       setSignUpError("Passwords do not match!");
       console.log("signup Error Match Pass", signUpError);
     } else {
-
       try {
-        const { email, password } = signUpDetails;
         setSignUpError("");
         await signUp(emailRef.current.value, passwordRef.current.value);
       } catch (error) {
@@ -43,7 +29,6 @@ const SignUpView = () => {
         );
         console.log("signup Error Creating Account", signUpError);
       }
-      
     }
   };
   return (
@@ -92,7 +77,6 @@ const SignUpView = () => {
                 Already have an Account?
               </Link>
             </Form>
-            {JSON.stringify(signUpDetails)}
             User: {JSON.stringify(currentUser)}
             Error: {JSON.stringify(signUpError)}
           </Col>
