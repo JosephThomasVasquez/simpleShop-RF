@@ -20,7 +20,7 @@ const SignInView = () => {
     try {
       setSignInError("");
       await signIn(emailRef.current.value, passwordRef.current.value);
-      await history.push("/");
+      await history.push("/shoppinglist");
     } catch (error) {
       setSignInError("Error logging in. Please check email and password.");
       console.log("Login Error", signInError);
