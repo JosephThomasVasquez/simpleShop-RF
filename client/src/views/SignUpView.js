@@ -11,7 +11,7 @@ const SignUpView = () => {
     confirmPassword: "",
   });
 
-  const [signUpError, setSignUpError] = useState();
+  const [signUpError, setSignUpError] = useState('');
 
   const { signUp } = useAuth;
 
@@ -29,7 +29,9 @@ const SignUpView = () => {
     }
 
     try {
-      await setSignUpDetails({ email: "", password: "" });
+      const { email, password } = signUpDetails;
+
+      await setSignUpDetails({ email, password });
       setSignUpError("");
     } catch (error) {
       setSignUpError(
@@ -75,7 +77,11 @@ const SignUpView = () => {
                   onChange={handleChange}
                 />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button
+                variant="primary"
+                type="submit"
+                disabled={signUpError === "" && signUpDetails.email === "" && signUpDetails.password === "" ? true : false}
+              >
                 Sign Up
               </Button>
               <Link to="/signin" className="ml-3">
