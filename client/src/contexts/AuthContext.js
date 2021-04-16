@@ -11,11 +11,11 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("");
   const [checkUser, setCheckUser] = useState(true);
-  console.log("Current User > AuthContext", currentUser);
+  // console.log("Current User > AuthContext", currentUser);
 
   // Create a new user with email and password
   const signUp = (email, password) => {
-    console.log("Signing up", email, password);
+    // console.log("Signing up", email, password);
 
     return auth.createUserWithEmailAndPassword(email, password);
   };
@@ -25,9 +25,9 @@ const AuthProvider = ({ children }) => {
   };
 
   const signOut = () => {
+    console.log("User signed out");
     return auth.signOut();
-    console.log('User signed out');
-  }
+  };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {

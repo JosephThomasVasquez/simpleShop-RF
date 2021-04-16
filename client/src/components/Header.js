@@ -3,7 +3,9 @@ import { useAuth } from "../contexts/AuthContext";
 import { Nav, Navbar, NavDropdown, Form, Button } from "react-bootstrap";
 
 const Header = () => {
-  const { signOut } = useAuth();
+  const { currentUser, signOut } = useAuth();
+
+  console.log(currentUser);
 
   const handleSignOut = (e) => {
     e.preventDefault();
@@ -19,13 +21,18 @@ const Header = () => {
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/shoppinglist">ShoppingList</Nav.Link>
-            <NavDropdown title="Dashboard" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/signin">Sign In</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="/" onClick={handleSignOut}>
-                Sign Out
-              </NavDropdown.Item>
-            </NavDropdown>
+            {currentUser ? (
+              <NavDropdown title="Dashboard" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/signin">Sign In</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/" onClick={handleSignOut}>
+                  Sign Out
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <Nav.Link href="signin">Sign In</Nav.Link>
+            )}
+            {!currentUser && <Nav.Link href="signup">Sign Up</Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
