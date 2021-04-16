@@ -1,7 +1,15 @@
 import React from "react";
+import { useAuth } from "../contexts/AuthContext";
 import { Nav, Navbar, NavDropdown, Form, Button } from "react-bootstrap";
 
 const Header = () => {
+  const { signOut } = useAuth();
+
+  const handleSignOut = (e) => {
+    e.preventDefault();
+    signOut();
+  };
+
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -14,7 +22,9 @@ const Header = () => {
             <NavDropdown title="Dashboard" id="basic-nav-dropdown">
               <NavDropdown.Item href="/signin">Sign In</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/">Sign Out</NavDropdown.Item>
+              <NavDropdown.Item href="/" onClick={handleSignOut}>
+                Sign Out
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

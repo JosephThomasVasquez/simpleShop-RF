@@ -26,6 +26,7 @@ const AuthProvider = ({ children }) => {
 
   const signOut = () => {
     return auth.signOut();
+    console.log('User signed out');
   }
 
   useEffect(() => {
