@@ -12,9 +12,9 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID,
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 
-const auth = firebase.auth();
+const auth = app.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 const signInWithGoogle = () => {

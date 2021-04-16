@@ -9,16 +9,16 @@ import "./App.css";
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Switch>
           <Route exact path="/" component={HomeView} />
           <Route exact path="/signin" component={SignInView} />
           <Route exact path="/signup" component={SignUpView} />
           <Route exact path="/shoppinglist" component={ShopListView} />
         </Switch>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

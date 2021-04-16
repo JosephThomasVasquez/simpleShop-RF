@@ -10,25 +10,26 @@ export const useAuth = () => {
 
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("");
+  console.log("Current User > AuthContext", currentUser);
 
   // Create a new user with email and password
   const signUp = (email, password) => {
+    console.log("Signing up", email, password);
+
     return auth.createUserWithEmailAndPassword(email, password);
   };
 
   useEffect(() => {
-    const unSubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
 
-    return unSubscribe;
-  }, [currentUser]);
+    return unsubscribe;
+  }, []);
 
-  const authValue = { currentUser, signUp };
+  const value = { currentUser, signUp };
 
-  return (
-    <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;

@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
 
 const SignUpView = () => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordConfirmRef = useRef();
+
   const [signUpDetails, setSignUpDetails] = useState({
     email: "",
     password: "",
@@ -13,7 +17,7 @@ const SignUpView = () => {
 
   const [signUpError, setSignUpError] = useState("");
 
-  const { signUp, currentUser } = useAuth;
+  const { signUp, currentUser } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,16 +28,15 @@ const SignUpView = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    if (signUpDetails.password !== signUpDetails.confirmPassword) {
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       setSignUpError("Passwords do not match!");
       console.log("signup Error Match Pass", signUpError);
     }
 
     try {
       const { email, password } = signUpDetails;
-
-      await signUp({ email, password });
       setSignUpError("");
+      await signUp(emailRef.current.value, passwordRef.current.value);
     } catch (error) {
       setSignUpError(
         "Error creating account. Please check email and passwords."
@@ -46,7 +49,7 @@ const SignUpView = () => {
       <Header />
       <Container>
         <h1 className="pt-5">Sign Up</h1>
-        {currentUser}
+
         <Row>
           <Col md={12}>
             <Form onSubmit={handleSignUp}>
@@ -56,8 +59,8 @@ const SignUpView = () => {
                   type="email"
                   name="email"
                   placeholder="Enter your email address"
-                  value={signUpDetails.email}
-                  onChange={handleChange}
+                  ref={emailRef}
+                  required
                 />
               </Form.Group>
               <Form.Group id="password">
@@ -66,8 +69,8 @@ const SignUpView = () => {
                   type="password"
                   name="password"
                   placeholder="Enter a Password"
-                  value={signUpDetails.password}
-                  onChange={handleChange}
+                  ref={passwordRef}
+                  required
                 />
               </Form.Group>
               <Form.Group id="confirmPassword">
@@ -76,21 +79,11 @@ const SignUpView = () => {
                   type="password"
                   name="confirmPassword"
                   placeholder="Confirm Password"
-                  value={signUpDetails.confirmPassword}
-                  onChange={handleChange}
+                  ref={passwordConfirmRef}
+                  required
                 />
               </Form.Group>
-              <Button
-                variant="primary"
-                type="submit"
-                disabled={
-                  signUpError === "" &&
-                  signUpDetails.email === "" &&
-                  signUpDetails.password === ""
-                    ? true
-                    : false
-                }
-              >
+              <Button variant="primary" type="submit">
                 Sign Up
               </Button>
               <Link to="/signin" className="ml-3">
@@ -98,6 +91,8 @@ const SignUpView = () => {
               </Link>
             </Form>
             {JSON.stringify(signUpDetails)}
+            User: {JSON.stringify(currentUser)}
+            Error: {JSON.stringify(signUpError)}
           </Col>
         </Row>
       </Container>
