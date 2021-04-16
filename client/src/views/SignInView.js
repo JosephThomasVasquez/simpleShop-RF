@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { useAuth } from "../contexts/AuthContext";
 import { signInWithGoogle } from "../firebase/config";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
@@ -6,6 +7,10 @@ import Header from "../components/Header";
 const SignInView = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
+
+  const [signUpError, setSignUpError] = useState("");
+
+  const { signUp, currentUser } = useAuth();
 
   const handleSignIn = (e) => {
     e.preventDefault();

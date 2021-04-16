@@ -20,6 +20,10 @@ const AuthProvider = ({ children }) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
 
+  const signIn = (email, password) => {
+    return auth.signInWithEmailAndPassword(email, password);
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
@@ -29,7 +33,7 @@ const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const value = { currentUser, signUp };
+  const value = { currentUser, signUp, signIn };
 
   return (
     <AuthContext.Provider value={value}>
