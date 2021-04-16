@@ -31,17 +31,19 @@ const SignUpView = () => {
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       setSignUpError("Passwords do not match!");
       console.log("signup Error Match Pass", signUpError);
-    }
+    } else {
 
-    try {
-      const { email, password } = signUpDetails;
-      setSignUpError("");
-      await signUp(emailRef.current.value, passwordRef.current.value);
-    } catch (error) {
-      setSignUpError(
-        "Error creating account. Please check email and passwords."
-      );
-      console.log("signup Error Creating Account", signUpError);
+      try {
+        const { email, password } = signUpDetails;
+        setSignUpError("");
+        await signUp(emailRef.current.value, passwordRef.current.value);
+      } catch (error) {
+        setSignUpError(
+          "Error creating account. Please check email and passwords."
+        );
+        console.log("signup Error Creating Account", signUpError);
+      }
+      
     }
   };
   return (
