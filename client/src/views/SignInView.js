@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import { Link, useHistory } from "react-router-dom";
 import { signInWithGoogle } from "../firebase/config";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
@@ -11,6 +12,7 @@ const SignInView = () => {
   const [signInError, setSignInError] = useState("");
 
   const { signIn } = useAuth();
+  const history = useHistory();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -18,10 +20,9 @@ const SignInView = () => {
     try {
       setSignInError("");
       await signIn(emailRef.current.value, passwordRef.current.value);
+      await history.push("/");
     } catch (error) {
-      setSignInError(
-        "Error logging in. Please check email and password."
-      );
+      setSignInError("Error logging in. Please check email and password.");
       console.log("Login Error", signInError);
     }
   };
