@@ -1,18 +1,21 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 const AuthRoute = ({ component: ComponentView, ...Components }) => {
   const { currentUser } = useAuth();
 
   return (
-    <Route>
+    <Route
       {...Components}
-      render=
-      {(props) => {
-        currentUser ? <ComponentView {...props} /> : <Redirect tp="signin" />;
+      render={(props) => {
+        return currentUser ? (
+          <ComponentView {...props} />
+        ) : (
+          <Redirect tp="signin" />
+        );
       }}
-    </Route>
+    ></Route>
   );
 };
 

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./bootstrap.min.css";
 import AuthProvider from "./contexts/AuthContext";
+import AuthRoute from "./components/AuthRoute";
 import HomeView from "./views/HomeView";
 import SignInView from "./views/SignInView";
 import SignUpView from "./views/SignUpView";
