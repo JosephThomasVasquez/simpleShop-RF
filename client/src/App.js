@@ -16,7 +16,7 @@ function App() {
           <Route exact path="/" component={HomeView} />
           <Route exact path="/signin" component={SignInView} />
           <Route exact path="/signup" component={SignUpView} />
-          <Route exact path="/shoppinglist" component={ShopListView} />
+          <AuthRoute exact path="/shoppinglist" component={ShopListView} />
         </Switch>
       </AuthProvider>
     </Router>
