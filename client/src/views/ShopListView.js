@@ -6,6 +6,7 @@ import { appFirestore } from "../firebase/config";
 import data from "../data/data";
 
 const ShopListView = () => {
+  const [item, setItem] = useState("");
   const [shopItemsList, setShopItemsList] = useState([]);
   const { firestoreDocs } = FirestoreGetCollection(
     "users",
@@ -16,20 +17,20 @@ const ShopListView = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "item") {
-      setShopItemsList({ ...shopItemsList, item: value });
+      setItem(e.target.value);
     }
     console.log("firestoreDocs", firestoreDocs);
   };
 
   const handleAddItem = (e) => {
     e.preventDefault();
-
+    setShopItemsList([...shopItemsList, { name: item, key: Date.now() }]);
     console.log("items:", shopItemsList);
   };
 
   const addToFirestore = async (e) => {
     e.preventDefault();
-    console.log('test')
+    console.log("test");
 
     const fakeId = "yxh123898sfsfj";
 
@@ -42,7 +43,7 @@ const ShopListView = () => {
         type: data[0].type,
         count: data[0].count,
       });
-    await console.log('getDoc', docRef.get());
+    await console.log("getDoc", docRef.get());
   };
 
   return (
@@ -67,10 +68,11 @@ const ShopListView = () => {
               </Button>
             </Form>
           </Col>
-          <Col md={2}>{JSON.stringify(shopItemsList)}</Col>
-          <Button variant="primary" type="button" onClick={addToFirestore}>
+          {/* <Button variant="primary" type="button" onClick={addToFirestore}>
             Add to Firestore
-          </Button>
+          </Button> */}
+          <Col md={2}>{JSON.stringify(item)}</Col>
+          <Col md={2}>{JSON.stringify(shopItemsList)}</Col>
         </Row>
       </Container>
     </div>
