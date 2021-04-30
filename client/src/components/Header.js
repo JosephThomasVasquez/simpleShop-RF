@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <div>
       <Navbar bg="primary" variant="dark" expand="lg">
-        <Navbar.Brand href="/">ShopList</Navbar.Brand>
+        <Navbar.Brand href="/"><i class="far fa-clipboard icon-brand"></i>ShopList</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
