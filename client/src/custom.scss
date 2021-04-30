@@ -1,0 +1,12 @@
+// Bootstrap scss file
+// @import '~bootstrap/scss/bootstrap.scss';
+
+
+// Overwrite bootstrap theme styles
+$primary: #21897E;
+$secondary:  #CBB06B;
+$light: #F8DECD;
+$info: #8F29FF;
+
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
