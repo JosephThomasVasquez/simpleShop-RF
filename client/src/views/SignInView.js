@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { signInWithGoogle } from "../firebase/config";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
+import googleLogo from "../icons/Google__G__Logo.svg.png";
 
 const SignInView = () => {
   const emailRef = useRef();
@@ -58,11 +59,11 @@ const SignInView = () => {
                   Sign In
                 </Button>
                 <Button
-                  variant="primary"
                   type="submit"
-                  className="ml-2"
+                  className="ml-2 google-btn"
                   onClick={signInWithGoogle}
                 >
+                  <img src={googleLogo} width="24px" alt="Google Sign In Button" className="img-google-btn"/>
                   Sign In with Google
                 </Button>
                 <Link to="/signup" className="mr-3 ml-auto">
