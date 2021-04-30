@@ -1,7 +1,3 @@
-// Bootstrap scss file
-// @import '~bootstrap/scss/bootstrap.scss';
-
-
 // Overwrite bootstrap theme styles
 $primary: #009b9b;
 $secondary:  #FC7A57;
@@ -9,5 +5,5 @@ $light: #f0f3bd;
 $info: #ffd275;
 $dark: #B2DDF7;
 
-
+// Bootstrap scss file
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
