@@ -1,9 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import ListItem from "./ListItem";
 
 const ShoppingList = ({ listTitle, addItem }) => {
   console.log("AddItem shoppinglist", addItem);
+
+  const handleToggleComplete = (e) => {
+    console.log('item', e.target)
+  }
 
   return (
     <div>
@@ -17,11 +21,15 @@ const ShoppingList = ({ listTitle, addItem }) => {
                 <div key={item.key}>
                   <Container fluid="md">
                     <Row>
-                      <Col md={2}><i className="fas fa-check-circle"></i></Col>
-                      <Col md={8}>
+                      <Col md={1}>
+                        <i className="fas fa-check-circle"></i>
+                      </Col>
+                      <Col md={10}>
                         <ListItem item={item} />
                       </Col>
-                      <Col md={2}></Col>
+                      <Col md={1}>
+                        <i className="fas fa-minus-circle"></i>
+                      </Col>
                     </Row>
                   </Container>
                 </div>
