@@ -66,12 +66,21 @@ const ShopListView = () => {
         <Row>
           <Col md={8}>
             <Form onSubmit={handleAddItem}>
+              <Form.Group controlId="addTitle">
+                <Form.Label>Title your List</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="title"
+                  placeholder="Add a title"
+                  onChange={handleChange}
+                />
+              </Form.Group>
               <Form.Group controlId="addItemInput">
-                <Form.Label>Add Item to your list</Form.Label>
+                <Form.Label>Add items to your list here:</Form.Label>
                 <Form.Control
                   type="text"
                   name="item"
-                  placeholder="Add item..."
+                  placeholder="Item, Product, Location "
                   onChange={handleChange}
                 />
               </Form.Group>
