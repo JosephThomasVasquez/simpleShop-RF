@@ -55,12 +55,12 @@ const SignInView = () => {
                 />
               </Form.Group>
               <Row className="ml-auto">
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" className="gradient-buttons">
                   Sign In
                 </Button>
                 <Button
                   type="submit"
-                  className="ml-2 google-btn"
+                  className="ml-2 google-btn gradient-buttons"
                   onClick={signInWithGoogle}
                 >
                   <img src={googleLogo} width="24px" alt="Google Sign In Button" className="img-google-btn"/>

@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <div>
-      <Navbar bg="primary" variant="dark" expand="lg">
+      <Navbar bg="primary" variant="dark" expand="lg" className="gradient-header">
         <Navbar.Brand href="/"><i className="far fa-clipboard icon-brand"></i><span className="ml-3 align-text-bottom brand-title">ShopList</span></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

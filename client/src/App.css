@@ -8,11 +8,33 @@
 }
 
 .google-btn {
-    background: white;
-    color: black;
+  background: white;
+  color: black;
 }
 
 .img-google-btn {
-    margin-bottom: 0.1em;
-    margin-right: 0.5em;
+  margin-bottom: 0.1em;
+  margin-right: 0.5em;
+}
+
+.gradient-header {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(0, 0, 0, 0.15) 80%,
+    rgba(0, 0, 0, 0.05)
+  );
+  background-repeat: repeat-x;
+}
+
+.gradient-buttons {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(0, 0, 0, 0.15) 80%,
+    rgba(0, 0, 0, 0.05)
+  );
+  background-repeat: repeat-x;
 }

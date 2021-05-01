@@ -74,7 +74,7 @@ const ShopListView = () => {
                   onChange={handleChange}
                 />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" className="gradient-buttons">
                 Add Item
               </Button>
             </Form>
