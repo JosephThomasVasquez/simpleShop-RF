@@ -16,7 +16,7 @@ const ShopListProvider = ({ children }) => {
     items: ["Bacon", "Eggs", "Burger Buns", "Milk", "Parmesan Cheese"],
   });
 
-  console.log('currentUser', currentUser)
+  console.log("currentUser", currentUser);
   // Get the shoppingList doc from Firestore from the current User Id
   const getShopList = () => {
     appFirestore
@@ -28,7 +28,14 @@ const ShopListProvider = ({ children }) => {
       });
   };
 
-  const value = { shopListDocs, getShopList };
+  const updateShopList = (data) => {
+    return appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .set({ shoppingLists: [...data] });
+  };
+
+  const value = { shopListDocs, getShopList, updateShopList };
 
   return (
     <shopListContext.Provider value={value}>
