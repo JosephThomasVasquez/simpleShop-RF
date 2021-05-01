@@ -16,14 +16,14 @@ const ShopListView = () => {
   // console.log(shopItemsList);
 
   useEffect(() => {
-    console.log("USER", currentUser);
-    appFirestore
-      .collection("users")
-      .doc(currentUser.uid)
-      .get()
-      .then((doc) => {
-        console.log("User ShoppingLists", doc.data());
-      });
+    // console.log("USER", currentUser);
+    // appFirestore
+    //   .collection("users")
+    //   .doc(currentUser.uid)
+    //   .get()
+    //   .then((doc) => {
+    //     console.log("User ShoppingLists", doc.data());
+    //   });
   }, []);
 
   const handleChange = (e) => {

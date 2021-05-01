@@ -8,9 +8,13 @@ const ShoppingList = ({ listTitle, addItem }) => {
 
   const handleToggleComplete = (e) => {
     console.log("item", e.target);
+    // console.log("getShopList", getShopList);
   };
 
-  console.log('userShopLIST', useUserShopList());
+  const { getShopList } = useUserShopList();
+
+  // console.log("userShopLIST", useUserShopList());
+  getShopList();
 
   return (
     <div>
