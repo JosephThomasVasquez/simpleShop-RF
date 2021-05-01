@@ -80,7 +80,7 @@ const ShopListView = () => {
             </Form>
           </Col>
           <Col md={4}>
-            <ShoppingList />
+            <ShoppingList addItem={item}/>
             {JSON.stringify(item)}
           </Col>
           <Col md={12}>{JSON.stringify(shopItemsList)}</Col>

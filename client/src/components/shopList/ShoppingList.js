@@ -4,15 +4,35 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 const ShoppingList = () => {
   return (
     <div>
-      <Card style={{ width: "18rem" }} className="justify-content-center gradient-buttons shadow">
-        <Card.Img variant="top" src="holder.js/100px180" />
+      <Card
+        style={{ width: "18rem" }}
+        className="justify-content-center gradient-buttons shadow"
+      >
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title>List</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            <ul>
+              <li>Bacon</li>
+              <li>Eggs</li>
+              <li>Bread</li>
+              <li>Sausage</li>
+              <li>Toilet Paper</li>
+            </ul>
           </Card.Text>
-          <Button variant="primary" className="justify-content-center gradient-buttons">Go somewhere</Button>
+          <Container fluid="md">
+            <Row>
+              <Col>
+                <Button variant="primary" className="gradient-buttons">
+                  Save
+                </Button>
+              </Col>
+              <Col>
+                <Button variant="danger" className="gradient-buttons">
+                  Delete
+                </Button>
+              </Col>
+            </Row>
+          </Container>
         </Card.Body>
       </Card>
     </div>
