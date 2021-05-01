@@ -1,22 +1,25 @@
 import React from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import ListItem from "./ListItem";
 
 const ShoppingList = () => {
   return (
     <div>
       <Card
-        style={{ width: "18rem" }}
-        className="justify-content-center gradient-buttons shadow"
+        className="gradient-buttons shadow"
       >
         <Card.Body>
-          <Card.Title>List</Card.Title>
+          <Card.Title className="text-center">List</Card.Title>
           <Card.Text>
             <ul>
-              <li>Bacon</li>
-              <li>Eggs</li>
-              <li>Bread</li>
-              <li>Sausage</li>
-              <li>Toilet Paper</li>
+              <li className="item-li">Bacon</li>
+              <li className="item-li"><ListItem /></li>
+              <li className="item-li"><ListItem /></li>
+              <li className="item-li"><ListItem /></li>
+              <li className="item-li">Eggs</li>
+              <li className="item-li">Bread</li>
+              <li className="item-li">Sausage</li>
+              <li className="item-li">Toilet Paper</li>
             </ul>
           </Card.Text>
           <Container fluid="md">

@@ -42,3 +42,8 @@
   );
   background-repeat: repeat-x;
 }
+
+/* SHOPPING LIST */
+.item-li {
+  list-style-type: none;
+}
