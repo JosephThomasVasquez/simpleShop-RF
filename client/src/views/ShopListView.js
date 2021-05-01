@@ -38,7 +38,7 @@ const ShopListView = () => {
 
   const handleAddItem = (e) => {
     e.preventDefault();
-    setShopItemsList([...shopItemsList, { name: item, key: Date.now() }]);
+    setShopItemsList([...shopItemsList, { name: item, quantity: 1, completed: false, key: Date.now() }]);
     console.log("items:", shopItemsList);
   };
 

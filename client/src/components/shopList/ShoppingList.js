@@ -15,9 +15,9 @@ const ShoppingList = ({ listTitle, addItem }) => {
             {addItem &&
               addItem.map((item) => (
                 <div key={item.key}>
-                  <Container>
+                  <Container fluid="md">
                     <Row>
-                      <Col md={2}></Col>
+                      <Col md={2}><i className="fas fa-check-circle"></i></Col>
                       <Col md={8}>
                         <ListItem item={item} />
                       </Col>
