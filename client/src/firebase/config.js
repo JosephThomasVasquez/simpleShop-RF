@@ -21,6 +21,7 @@ const appStorage = firebase.storage();
 const appFirestore = firebase.firestore();
 const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 
+// Sign In with Google / Requires no signup since user has a google account
 const signInWithGoogle = () => {
   auth
     .signInWithPopup(googleProvider)
