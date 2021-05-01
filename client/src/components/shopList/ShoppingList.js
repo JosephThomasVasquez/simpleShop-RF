@@ -4,6 +4,7 @@ import ListItem from "./ListItem";
 
 const ShoppingList = ({ listTitle, addItem }) => {
   console.log("AddItem shoppinglist", addItem);
+
   return (
     <div>
       <Card className="gradient-buttons shadow">
@@ -12,7 +13,19 @@ const ShoppingList = ({ listTitle, addItem }) => {
 
           <ul>
             {addItem &&
-              addItem.map((item) => <ListItem item={item} key={item.key} />)}
+              addItem.map((item) => (
+                <div key={item.key}>
+                  <Container>
+                    <Row>
+                      <Col md={2}></Col>
+                      <Col md={8}>
+                        <ListItem item={item} />
+                      </Col>
+                      <Col md={2}></Col>
+                    </Row>
+                  </Container>
+                </div>
+              ))}
           </ul>
 
           <Container fluid="md">
