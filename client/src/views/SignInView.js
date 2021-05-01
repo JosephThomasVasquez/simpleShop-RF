@@ -59,7 +59,7 @@ const SignInView = () => {
                   Sign In
                 </Button>
                 <Button
-                  type="submit"
+                  type="button"
                   className="ml-2 google-btn gradient-buttons"
                   onClick={signInWithGoogle}
                 >
