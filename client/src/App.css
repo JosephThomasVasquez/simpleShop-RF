@@ -1,3 +1,4 @@
+/* HEADER STYLES */
 .icon-brand {
   font-size: 30px;
 }
@@ -11,16 +12,19 @@
   color: #76ffff;
 }
 
+.user-dropdown-btn {
+  border-radius: 10px;
+  border: 1px solid #76ffff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* SIGN IN STYLES */
 .google-btn {
   background: white;
   color: black;
 }
 
-.img-google-btn {
-  margin-bottom: 0.1em;
-  margin-right: 0.5em;
-}
-
+/* BUTTON STYLES */
 .gradient-header {
   background-image: linear-gradient(
     to bottom,
