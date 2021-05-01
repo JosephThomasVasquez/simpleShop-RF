@@ -48,6 +48,17 @@
 }
 
 /* SHOPPING LIST */
+
+.item-container {
+  padding: 5px 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
 .item-li {
   list-style-type: none;
 }

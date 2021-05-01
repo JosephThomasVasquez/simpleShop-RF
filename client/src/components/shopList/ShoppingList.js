@@ -18,14 +18,17 @@ const ShoppingList = ({ listTitle, addItem }) => {
           <ul>
             {addItem &&
               addItem.map((item) => (
-                <div key={item.key}>
+                <div key={item.key} onClick={handleToggleComplete} className="item-container">
                   <Container fluid="md">
                     <Row>
                       <Col md={1}>
                         <i className="fas fa-check-circle"></i>
                       </Col>
-                      <Col md={10}>
+                      <Col md={8}>
                         <ListItem item={item} />
+                      </Col>
+                      <Col md={2}>
+                        <span>qty: {item.quantity}</span>
                       </Col>
                       <Col md={1}>
                         <i className="fas fa-minus-circle"></i>
@@ -38,12 +41,12 @@ const ShoppingList = ({ listTitle, addItem }) => {
 
           <Container fluid="md">
             <Row>
-              <Col>
+              <Col md={6}>
                 <Button variant="primary" className="gradient-buttons">
                   Save
                 </Button>
               </Col>
-              <Col>
+              <Col md={6}>
                 <Button variant="danger" className="gradient-buttons">
                   Delete
                 </Button>
