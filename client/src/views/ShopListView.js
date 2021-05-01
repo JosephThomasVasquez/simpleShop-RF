@@ -10,7 +10,7 @@ import data from "../data/data";
 const ShopListView = () => {
   const { currentUser } = useAuth();
   const [item, setItem] = useState("");
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState("Shopping List");
   const [shopItemsList, setShopItemsList] = useState([]);
   const { firestoreDocs } = FirestoreGetCollection(currentUser.uid);
   // console.log(shopItemsList);
@@ -30,6 +30,8 @@ const ShopListView = () => {
     const { name, value } = e.target;
     if (name === "item") {
       setItem(e.target.value);
+    } else if (name === "title") {
+      setTitle(e.target.value);
     }
     console.log("firestoreDocs", firestoreDocs);
   };
@@ -71,7 +73,7 @@ const ShopListView = () => {
                 <Form.Control
                   type="text"
                   name="title"
-                  placeholder="Add a title"
+                  placeholder="Title, Store, Location..."
                   onChange={handleChange}
                 />
               </Form.Group>
@@ -84,13 +86,17 @@ const ShopListView = () => {
                   onChange={handleChange}
                 />
               </Form.Group>
-              <Button variant="primary" type="submit" className="gradient-buttons">
+              <Button
+                variant="primary"
+                type="submit"
+                className="gradient-buttons"
+              >
                 Add Item
               </Button>
             </Form>
           </Col>
           <Col md={4}>
-            <ShoppingList addItem={item} listTitle={title}/>
+            <ShoppingList listTitle={title} addItem={shopItemsList} />
             {JSON.stringify(item)}
           </Col>
           <Col md={12}>{JSON.stringify(shopItemsList)}</Col>

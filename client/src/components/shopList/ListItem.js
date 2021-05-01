@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
-const ListItem = (props) => {
+const ListItem = ({ item }) => {
   return (
     <div className="item-container">
-      <div>Item</div>
+      <li className="item-li">{item.name}</li>
     </div>
   );
 };

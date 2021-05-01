@@ -1,27 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import ListItem from "./ListItem";
 
-const ShoppingList = () => {
+const ShoppingList = ({ listTitle, addItem }) => {
+  console.log("AddItem shoppinglist", addItem);
   return (
     <div>
-      <Card
-        className="gradient-buttons shadow"
-      >
+      <Card className="gradient-buttons shadow">
         <Card.Body>
-          <Card.Title className="text-center">List</Card.Title>
-          <Card.Text>
-            <ul>
-              <li className="item-li">Bacon</li>
-              <li className="item-li"><ListItem /></li>
-              <li className="item-li"><ListItem /></li>
-              <li className="item-li"><ListItem /></li>
-              <li className="item-li">Eggs</li>
-              <li className="item-li">Bread</li>
-              <li className="item-li">Sausage</li>
-              <li className="item-li">Toilet Paper</li>
-            </ul>
-          </Card.Text>
+          <Card.Title className="text-center">{listTitle}</Card.Title>
+
+          <ul>
+            {addItem &&
+              addItem.map((item) => <ListItem item={item} key={item.key} />)}
+          </ul>
+
           <Container fluid="md">
             <Row>
               <Col>
