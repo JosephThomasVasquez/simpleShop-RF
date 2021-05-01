@@ -10,6 +10,7 @@ import data from "../data/data";
 const ShopListView = () => {
   const { currentUser } = useAuth();
   const [item, setItem] = useState("");
+  const [title, setTitle] = useState('');
   const [shopItemsList, setShopItemsList] = useState([]);
   const { firestoreDocs } = FirestoreGetCollection(currentUser.uid);
   // console.log(shopItemsList);
@@ -80,7 +81,7 @@ const ShopListView = () => {
             </Form>
           </Col>
           <Col md={4}>
-            <ShoppingList addItem={item}/>
+            <ShoppingList addItem={item} listTitle={title}/>
             {JSON.stringify(item)}
           </Col>
           <Col md={12}>{JSON.stringify(shopItemsList)}</Col>
