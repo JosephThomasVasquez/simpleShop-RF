@@ -19,8 +19,8 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/shoppinglist">ShoppingList</Nav.Link>
+            <Nav.Link href="/" className="text-white">Home</Nav.Link>
+            <Nav.Link href="/shoppinglist" className="text-white">ShoppingList</Nav.Link>
             {currentUser ? (
               <NavDropdown
                 title={
@@ -37,9 +37,9 @@ const Header = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             ) : (
-              <Nav.Link href="signin">Sign In</Nav.Link>
+              <Nav.Link href="signin" className="text-white">Sign In</Nav.Link>
             )}
-            {!currentUser && <Nav.Link href="signup">Sign Up</Nav.Link>}
+            {!currentUser && <Nav.Link href="signup" className="text-white">Sign Up</Nav.Link>}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
