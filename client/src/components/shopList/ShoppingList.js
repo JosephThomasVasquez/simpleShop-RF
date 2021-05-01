@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import ListItem from "./ListItem";
+import { useUserShopList } from "../../contexts/ShopListContext";
 
 const ShoppingList = ({ listTitle, addItem }) => {
   console.log("AddItem shoppinglist", addItem);
 
   const handleToggleComplete = (e) => {
-    console.log('item', e.target)
-  }
+    console.log("item", e.target);
+  };
+
+  console.log('userShopLIST', useUserShopList());
 
   return (
     <div>
@@ -18,7 +21,11 @@ const ShoppingList = ({ listTitle, addItem }) => {
           <ul>
             {addItem &&
               addItem.map((item) => (
-                <div key={item.key} onClick={handleToggleComplete} className="item-container">
+                <div
+                  key={item.key}
+                  onClick={handleToggleComplete}
+                  className="item-container"
+                >
                   <Container fluid="md">
                     <Row>
                       <Col md={1}>
