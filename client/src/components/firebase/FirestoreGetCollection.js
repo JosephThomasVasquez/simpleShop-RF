@@ -8,15 +8,15 @@ const FirestoreGetCollection = (collection, docId) => {
     const unSubscribe = appFirestore
       .collection(collection)
       .onSnapshot((snap) => {
-        console.log('snap', snap);
+        // console.log('snap', snap);
         let documents = [];
         snap.forEach((doc) => {
           // documents.push({ ...doc.data(), id: doc.id });
-          console.log({ ...doc.data()});
+          // console.log({ ...doc.data()});
         });
 
         setFirestoreDocs(documents);
-        console.log("firestore documents >", documents);
+        // console.log("firestore documents >", documents);
       });
 
     return () => unSubscribe();

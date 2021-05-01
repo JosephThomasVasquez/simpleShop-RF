@@ -17,21 +17,36 @@ const app = firebase.initializeApp(firebaseConfig);
 const auth = app.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
+const appStorage = firebase.storage();
+const appFirestore = firebase.firestore();
+const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+
 const signInWithGoogle = () => {
   auth
     .signInWithPopup(googleProvider)
     .then((res) => {
       console.log(res.user);
+
+      // Check if the User doc doesn't exist
+      appFirestore
+        .collection("users")
+        .doc(res.user.uid)
+        .get()
+        .then((doc) => {
+          console.log("User ShoppingLists", doc.data());
+
+          // Create one with user.uid and add empty shoppingLists array document
+          if (doc.data() === undefined) {
+            return appFirestore
+              .collection("users")
+              .doc(res.user.uid)
+              .set({ shoppingLists: [] });
+          }
+        });
     })
     .catch((error) => {
       console.log(error.message);
     });
 };
-
-
-
-const appStorage = firebase.storage();
-const appFirestore = firebase.firestore();
-const timestamp = firebase.firestore.FieldValue.serverTimestamp();
 
 export { auth, signInWithGoogle, appStorage, appFirestore, timestamp };
