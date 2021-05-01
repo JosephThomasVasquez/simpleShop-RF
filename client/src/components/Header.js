@@ -5,7 +5,7 @@ import { Nav, Navbar, NavDropdown, Form, Button } from "react-bootstrap";
 const Header = () => {
   const { currentUser, signOut } = useAuth();
 
-  console.log('Current LoggedIn User:', currentUser);
+  // console.log('Current LoggedIn User:', currentUser);
 
   const handleSignOut = (e) => {
     e.preventDefault();

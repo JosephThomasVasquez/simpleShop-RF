@@ -12,7 +12,7 @@ const AuthRoute = ({ component: ComponentView, ...Components }) => {
         return currentUser ? (
           <ComponentView {...props} />
         ) : (
-          <Redirect tp="signin" />
+          <Redirect to="signin" />
         );
       }}
     ></Route>

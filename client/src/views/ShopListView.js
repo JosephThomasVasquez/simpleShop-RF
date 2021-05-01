@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
+import { useAuth } from "../contexts/AuthContext";
 import FirestoreGetCollection from "../components/firebase/FirestoreGetCollection";
 import { appFirestore } from "../firebase/config";
 import data from "../data/data";
 
 const ShopListView = () => {
+  const { currentUser } = useAuth();
   const [item, setItem] = useState("");
   const [shopItemsList, setShopItemsList] = useState([]);
-  const { firestoreDocs } = FirestoreGetCollection(
-    "users",
-    "Kxg6FWVE1CMpNGmCgUQk"
-  );
+  const { firestoreDocs } = FirestoreGetCollection(currentUser.uid);
   // console.log(shopItemsList);
+
+  useEffect(() => {
+    console.log("USER", currentUser);
+    appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .get()
+      .then((doc) => {
+        console.log("User ShoppingLists", doc.data());
+      });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
