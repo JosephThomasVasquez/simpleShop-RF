@@ -28,6 +28,8 @@ const signInWithGoogle = () => {
     });
 };
 
+
+
 const appStorage = firebase.storage();
 const appFirestore = firebase.firestore();
 const timestamp = firebase.firestore.FieldValue.serverTimestamp();

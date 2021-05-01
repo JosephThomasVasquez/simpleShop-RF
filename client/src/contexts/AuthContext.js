@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { auth } from "../firebase/config";
+import { auth, appFirestore } from "../firebase/config";
 
 const AuthContext = React.createContext();
 
@@ -14,10 +14,18 @@ const AuthProvider = ({ children }) => {
   // console.log("Current User > AuthContext", currentUser);
 
   // Create a new user with email and password
-  const signUp = (email, password) => {
+  const signUp = async (email, password) => {
     // console.log("Signing up", email, password);
 
-    return auth.createUserWithEmailAndPassword(email, password);
+    // Create new user in Firebase
+    await auth.createUserWithEmailAndPassword(email, password).then((cred) => {
+
+      // Add user id to Firestore and set empty shoppingList
+      return appFirestore
+        .collection("users")
+        .doc(cred.user.uid)
+        .set({ shoppingLists: [] });
+    });
   };
 
   const signIn = (email, password) => {
