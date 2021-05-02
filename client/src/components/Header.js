@@ -27,11 +27,11 @@ const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link href="/" className="text-white">
-              Home
+            <Nav.Link href="/">
+            <span className="nav-link-color">Home</span>
             </Nav.Link>
-            <Nav.Link href="/shoppinglist" className="text-white">
-              ShoppingList
+            <Nav.Link href="/shoppinglist">
+              <span className="nav-link-color">ShoppingList</span>
             </Nav.Link>
             {currentUser ? (
               <Button
@@ -55,7 +55,8 @@ const Header = () => {
                   )}
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/" onClick={handleSignOut}>
-                    <i className="fas fa-sign-out-alt nav-profile-icon"></i>Sign Out
+                    <i className="fas fa-sign-out-alt nav-profile-icon"></i>Sign
+                    Out
                   </NavDropdown.Item>
                 </NavDropdown>
               </Button>

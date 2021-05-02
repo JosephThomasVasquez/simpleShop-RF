@@ -12,6 +12,16 @@
   color: #76ffff;
 }
 
+.nav-link-color {
+  color: #76ffff;
+  transition: all 0.5s;
+}
+
+.nav-link-color:hover {
+  color: white;
+  transition: all 0.5s;
+}
+
 .user-dropdown-btn {
   border-radius: 10px;
   border: 1px solid #76ffff;
@@ -19,11 +29,26 @@
   /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); */
 }
 
+.dropdown-item {
+  transition: all 0.5s;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 210, 117, 0.5);
+  transition: all 0.5s;
+}
+
 .nav-profile-icon {
   margin-right: 5px;
 }
 
 /* BODY STYLES BG and STUFF */
+
+.bg-white {
+  background-color: white;
+  width: 100%;
+  border-radius: 10px;
+}
 
 body {
   background-image: url(./images/geometric-leaves.png);
@@ -63,7 +88,7 @@ body {
 
 .form-label-color {
   color: #009b9b;
-  font-weight: 600;;
+  font-weight: 600;
 }
 
 .item-container {
