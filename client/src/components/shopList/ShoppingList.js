@@ -2,19 +2,54 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import ListItem from "./ListItem";
 import { useUserShopList } from "../../contexts/ShopListContext";
+import { useAuth } from "../../contexts/AuthContext";
+import { auth, appFirestore } from "../../firebase/config";
 
 const ShoppingList = ({ listTitle, addItem }) => {
-  console.log("AddItem shoppinglist", addItem);
+  const { getShopList, updateShopList } = useUserShopList();
+  const [shopList, setShopList] = useState([]);
+
+  // console.log("Shop List FS:", shopList);
+
+  const { currentUser } = useAuth();
+
+  const getList = async () => {
+    const ref = appFirestore.collection("users").doc(currentUser.uid);
+    console.log("ref:", ref);
+
+    try {
+      const results = [];
+      let querySnapshot = await ref.get().then((doc) => {
+        results.push(doc.data());
+      });
+
+      console.log("Results:", results);
+      setShopList({ ...results });
+      return results;
+    } catch (error) {
+      console.log("Error:", error);
+    }
+    
+  };
+
+  useEffect(() => {
+    getList();
+    console.log("Shop List FS:", shopList[0].items);
+  }, []);
+
+  // console.log("AddItem shoppinglist", addItem);
 
   const handleToggleComplete = (e) => {
     console.log("item", e.target);
     // console.log("getShopList", getShopList);
   };
 
-  const { getShopList } = useUserShopList();
+  const handleSaveList = () => {
+    updateShopList(listTitle, addItem);
+  };
 
   // console.log("userShopLIST", useUserShopList());
-  getShopList();
+  // getShopList();
 
   return (
     <div>
@@ -53,7 +88,11 @@ const ShoppingList = ({ listTitle, addItem }) => {
           <Container fluid="md">
             <Row>
               <Col md={6}>
-                <Button variant="primary" className="gradient-buttons">
+                <Button
+                  variant="primary"
+                  className="gradient-buttons"
+                  onClick={handleSaveList}
+                >
                   Save
                 </Button>
               </Col>

@@ -33,7 +33,6 @@ const ShopListView = () => {
     } else if (name === "title") {
       setTitle(e.target.value);
     }
-    console.log("firestoreDocs", firestoreDocs);
   };
 
   const handleAddItem = (e) => {
@@ -96,7 +95,7 @@ const ShopListView = () => {
             </Form>
           </Col>
           <Col md={6}>
-            <ShoppingList listTitle={title} addItem={shopItemsList} setShopItems={setShopItemsList} />
+            <ShoppingList listTitle={title} addItem={shopItemsList} />
             {JSON.stringify(item)}
           </Col>
           <Col md={12}>{JSON.stringify(shopItemsList)}</Col>
