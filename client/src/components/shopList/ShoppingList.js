@@ -5,27 +5,28 @@ import { useUserShopList } from "../../contexts/ShopListContext";
 import { useAuth } from "../../contexts/AuthContext";
 import { auth, appFirestore } from "../../firebase/config";
 
-const ShoppingList = ({ listTitle, addItem }) => {
+const ShoppingList = ({ listTitle }) => {
   const { getShopList, updateShopList } = useUserShopList();
   const [shopList, setShopList] = useState([]);
-
-  // console.log("Shop List FS:", shopList);
 
   const { currentUser } = useAuth();
 
   const getList = async () => {
-    const ref = appFirestore.collection("users").doc(currentUser.uid);
+    const ref = await appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("shoppingLists")
+      .doc("Safeway")
+      .collection("items")
+      .get();
     // console.log("ref:", ref);
 
     try {
-      const results = [];
-      let querySnapshot = await ref.get().then((doc) => {
-        results.push(doc.data());
-      });
+      let snapshot = ref.docs.map((doc) => doc.data());
 
-      console.log("Results:", results);
-      setShopList({ ...results });
-      return results;
+      console.log("snapshot:", snapshot);
+      setShopList(snapshot);
+      return snapshot;
     } catch (error) {
       console.log("Error:", error);
     }
@@ -35,23 +36,15 @@ const ShoppingList = ({ listTitle, addItem }) => {
     getList();
 
     if (shopList.length > 0) {
-      console.log("Shop List FS:", shopList[0].items);
+      console.log("Shop List FS:", shopList[0]);
     }
   }, []);
 
-  // console.log("AddItem shoppinglist", addItem);
-
   const handleToggleComplete = (e) => {
     console.log("item", e.target);
-    // console.log("getShopList", getShopList);
   };
 
-  const handleSaveList = () => {
-    updateShopList(listTitle, addItem);
-  };
-
-  // console.log("userShopLIST", useUserShopList());
-  // getShopList();
+  const handleSaveList = () => {};
 
   return (
     <div>
@@ -60,31 +53,32 @@ const ShoppingList = ({ listTitle, addItem }) => {
           <Card.Title className="text-center">{listTitle}</Card.Title>
 
           <ul>
-            {addItem &&
-              addItem.map((item) => (
-                <div
-                  key={item.key}
-                  onClick={handleToggleComplete}
-                  className="item-container"
-                >
-                  <Container fluid="md">
-                    <Row>
-                      <Col md={1}>
-                        <i className="fas fa-check-circle"></i>
-                      </Col>
-                      <Col md={8}>
-                        <ListItem item={item} />
-                      </Col>
-                      <Col md={2}>
-                        <span>qty: {item.quantity}</span>
-                      </Col>
-                      <Col md={1}>
-                        <i className="fas fa-minus-circle"></i>
-                      </Col>
-                    </Row>
-                  </Container>
-                </div>
-              ))}
+            {shopList !== undefined
+              ? shopList.map((item) => (
+                  <div
+                    key={item.key}
+                    onClick={handleToggleComplete}
+                    className="item-container"
+                  >
+                    <Container fluid="md">
+                      <Row>
+                        <Col md={1}>
+                          <i className="fas fa-check-circle"></i>
+                        </Col>
+                        <Col md={8}>
+                          <ListItem item={item} />
+                        </Col>
+                        <Col md={2}>
+                          <span>qty: {item.quantity}</span>
+                        </Col>
+                        <Col md={1}>
+                          <i className="fas fa-minus-circle"></i>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </div>
+                ))
+              : null}
           </ul>
 
           <Container fluid="md">

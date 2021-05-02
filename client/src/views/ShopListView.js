@@ -4,27 +4,26 @@ import Header from "../components/Header";
 import ShoppingList from "../components/shopList/ShoppingList";
 import { useAuth } from "../contexts/AuthContext";
 import FirestoreGetCollection from "../components/firebase/FirestoreGetCollection";
-import { appFirestore } from "../firebase/config";
+// import { useUserShopList } from "../contexts/ShopListContext";
+import { appFirestore, auth } from "../firebase/config";
 import data from "../data/data";
 
 const ShopListView = () => {
   const { currentUser } = useAuth();
+  // const { getShopList, updateShopList } = useUserShopList();
+
   const [item, setItem] = useState("");
   const [title, setTitle] = useState("Shopping List");
-  const [shopItemsList, setShopItemsList] = useState([]);
+  const [shopItemsList, setShopItemsList] = useState({
+    name: "Test Thing",
+    quantity: 1,
+    completed: false,
+    key: Date.now(),
+  });
   const { firestoreDocs } = FirestoreGetCollection(currentUser.uid);
   // console.log(shopItemsList);
 
-  useEffect(() => {
-    // console.log("USER", currentUser);
-    // appFirestore
-    //   .collection("users")
-    //   .doc(currentUser.uid)
-    //   .get()
-    //   .then((doc) => {
-    //     console.log("User ShoppingLists", doc.data());
-    //   });
-  }, []);
+  useEffect(() => {}, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,8 +36,33 @@ const ShopListView = () => {
 
   const handleAddItem = (e) => {
     e.preventDefault();
-    setShopItemsList([...shopItemsList, { name: item, quantity: 1, completed: false, key: Date.now() }]);
+
+    if (title === "" || title === undefined) {
+      setTitle("Shopping List");
+    }
+    setShopItemsList([
+      ...shopItemsList,
+      { name: item, quantity: 1, completed: false, key: Date.now() },
+    ]);
+    console.log("title:", title);
+
     console.log("items:", shopItemsList);
+
+    updateShopList(shopItemsList);
+    // setShopItemsList("");
+  };
+
+  const updateShopList = async (item) => {
+    const ref = appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("shoppingLists")
+      .doc(title)
+      .collection("items");
+    console.log("ref", ref);
+
+    await ref.add(item);
+    // await ref.update({ items: item }, { merge: true });
   };
 
   const addToFirestore = async (e) => {

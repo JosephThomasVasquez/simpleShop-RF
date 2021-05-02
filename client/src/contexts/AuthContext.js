@@ -19,12 +19,13 @@ const AuthProvider = ({ children }) => {
 
     // Create new user in Firebase
     await auth.createUserWithEmailAndPassword(email, password).then((cred) => {
-
       // Add user id to Firestore and set empty shoppingList
       return appFirestore
         .collection("users")
         .doc(cred.user.uid)
-        .set({ shoppingLists: [] });
+        .collection("shoppingLists")
+        .doc("Shopping List")
+        .set({ items: [] });
     });
   };
 

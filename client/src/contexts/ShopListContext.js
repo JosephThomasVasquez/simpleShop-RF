@@ -43,11 +43,11 @@ const ShopListProvider = ({ children }) => {
   };
 
   // Update the shop list with data input
-  const updateShopList = (title, itemsList) => {
+  const updateShopList = (item) => {
     appFirestore
       .collection("users")
       .doc(currentUser.uid)
-      .set({ shoppingLists: [title], items: [...itemsList] });
+      .update({ items: item }, { merge: true });
   };
 
   const value = { shopListDocs, getShopList, updateShopList };
