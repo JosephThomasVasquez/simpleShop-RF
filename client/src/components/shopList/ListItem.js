@@ -7,13 +7,25 @@ const ListItem = ({ item }) => {
   const { currentUser } = useAuth();
   console.log(item);
 
-  const handleRemoveItem = (e) => {
-    // const removeItem = shopList.filter((item) => {
-    //   console.log("item.name:", item.name);
-    //   return e.target.attributes.name !== item.name;
-    // });
+  const handleRemoveItem = async (e) => {
 
-    console.log(e.target.attributes.name);
+    const ref = await appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("shoppingLists")
+      .doc("Shopping List")
+      .collection("items")
+      .doc(`${item.docId}`);
+
+    // console.log("ref:", ref);
+
+    try {
+      let snapshot = ref.delete();
+      console.log("snapshot:", snapshot);
+      return snapshot;
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
   return (
     <Container fluid="md">

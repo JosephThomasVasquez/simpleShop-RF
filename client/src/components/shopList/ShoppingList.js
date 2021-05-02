@@ -22,7 +22,12 @@ const ShoppingList = ({ listTitle }) => {
     // console.log("ref:", ref);
 
     try {
-      let snapshot = ref.docs.map((doc) => doc.data());
+      let snapshot = ref.docs.map((doc) => {
+        let docId = doc.id;
+        const data = { docId, ...doc.data() };
+
+        return data;
+      });
 
       console.log("snapshot:", snapshot);
       setShopList(snapshot);
