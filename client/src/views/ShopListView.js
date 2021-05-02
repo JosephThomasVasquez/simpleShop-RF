@@ -86,7 +86,9 @@ const ShopListView = () => {
           <Col md={6}>
             <Form onSubmit={handleAddItem}>
               <Form.Group>
-                <Form.Label>Title your List</Form.Label>
+                <Form.Label>
+                  <span className="form-label-color">Title your List</span>
+                </Form.Label>
                 <Form.Control
                   type="text"
                   name="title"
@@ -96,7 +98,7 @@ const ShopListView = () => {
                 />
               </Form.Group>
               <Form.Group>
-                <Form.Label>Add items to your list here:</Form.Label>
+                <Form.Label><span className="form-label-color">Add items here:</span></Form.Label>
                 <Form.Control
                   type="text"
                   name="item"

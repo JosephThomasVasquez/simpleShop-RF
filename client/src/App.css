@@ -61,6 +61,11 @@ body {
 
 /* SHOPPING LIST */
 
+.form-label-color {
+  color: #009b9b;
+  font-weight: 600;;
+}
+
 .item-container {
   padding: 5px 0;
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
