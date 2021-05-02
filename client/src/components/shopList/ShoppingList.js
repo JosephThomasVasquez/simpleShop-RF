@@ -15,7 +15,7 @@ const ShoppingList = ({ listTitle, addItem }) => {
 
   const getList = async () => {
     const ref = appFirestore.collection("users").doc(currentUser.uid);
-    console.log("ref:", ref);
+    // console.log("ref:", ref);
 
     try {
       const results = [];
@@ -29,12 +29,14 @@ const ShoppingList = ({ listTitle, addItem }) => {
     } catch (error) {
       console.log("Error:", error);
     }
-    
   };
 
   useEffect(() => {
     getList();
-    console.log("Shop List FS:", shopList[0].items);
+
+    if (shopList.length > 0) {
+      console.log("Shop List FS:", shopList[0].items);
+    }
   }, []);
 
   // console.log("AddItem shoppinglist", addItem);
