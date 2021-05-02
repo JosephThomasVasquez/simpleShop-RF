@@ -14,16 +14,25 @@ const ShopListView = () => {
 
   const [item, setItem] = useState("");
   const [title, setTitle] = useState("Shopping List");
-  const [shopItemsList, setShopItemsList] = useState({
-    name: "Test Thing",
-    quantity: 1,
-    completed: false,
-    key: Date.now(),
-  });
+  const [shopItemsList, setShopItemsList] = useState({});
   const { firestoreDocs } = FirestoreGetCollection(currentUser.uid);
   // console.log(shopItemsList);
 
   useEffect(() => {}, []);
+
+  const updateShopList = async (item) => {
+    console.log("item:", item);
+
+    const ref = await appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("shoppingLists")
+      .doc(title)
+      .collection("items");
+
+    return ref.add(item);
+    // await ref.update({ items: item }, { merge: true });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,29 +49,26 @@ const ShopListView = () => {
     if (title === "" || title === undefined) {
       setTitle("Shopping List");
     }
-    setShopItemsList([
-      ...shopItemsList,
-      { name: item, quantity: 1, completed: false, key: Date.now() },
-    ]);
+    // setShopItemsList({
+    //   name: item,
+    //   quantity: 1,
+    //   completed: false,
+    //   key: Date.now(),
+    // });
+    console.log("shopItemsList:", shopItemsList);
     console.log("title:", title);
 
-    console.log("items:", shopItemsList);
+    const data = {
+      name: item,
+      quantity: 1,
+      completed: false,
+      key: Date.now(),
+    };
 
-    updateShopList(shopItemsList);
+    updateShopList(data);
+    setShopItemsList("");
+
     // setShopItemsList("");
-  };
-
-  const updateShopList = async (item) => {
-    const ref = appFirestore
-      .collection("users")
-      .doc(currentUser.uid)
-      .collection("shoppingLists")
-      .doc(title)
-      .collection("items");
-    console.log("ref", ref);
-
-    await ref.add(item);
-    // await ref.update({ items: item }, { merge: true });
   };
 
   const addToFirestore = async (e) => {
@@ -119,10 +125,10 @@ const ShopListView = () => {
             </Form>
           </Col>
           <Col md={6}>
-            <ShoppingList listTitle={title} addItem={shopItemsList} />
-            {JSON.stringify(item)}
+            <ShoppingList listTitle={title} />
+            Item: {JSON.stringify(item)}
           </Col>
-          <Col md={12}>{JSON.stringify(shopItemsList)}</Col>
+          <Col md={12}>shopItemsList: {JSON.stringify(shopItemsList)}</Col>
         </Row>
       </Container>
     </div>

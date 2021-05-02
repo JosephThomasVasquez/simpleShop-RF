@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import ListItem from "./ListItem";
-import { useUserShopList } from "../../contexts/ShopListContext";
+// import { useUserShopList } from "../../contexts/ShopListContext";
 import { useAuth } from "../../contexts/AuthContext";
 import { auth, appFirestore } from "../../firebase/config";
 
 const ShoppingList = ({ listTitle }) => {
-  const { getShopList, updateShopList } = useUserShopList();
+  // const { getShopList, updateShopList } = useUserShopList();
   const [shopList, setShopList] = useState([]);
 
   const { currentUser } = useAuth();
@@ -16,7 +16,7 @@ const ShoppingList = ({ listTitle }) => {
       .collection("users")
       .doc(currentUser.uid)
       .collection("shoppingLists")
-      .doc("Safeway")
+      .doc("Shopping List")
       .collection("items")
       .get();
     // console.log("ref:", ref);
