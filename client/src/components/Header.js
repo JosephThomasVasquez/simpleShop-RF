@@ -49,11 +49,13 @@ const Header = () => {
                   {!currentUser ? (
                     <NavDropdown.Item href="/signin">Sign In</NavDropdown.Item>
                   ) : (
-                    <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                    <NavDropdown.Item href="/profile">
+                      <i className="fas fa-user nav-profile-icon"></i>Profile
+                    </NavDropdown.Item>
                   )}
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/" onClick={handleSignOut}>
-                    Sign Out
+                    <i className="fas fa-sign-out-alt nav-profile-icon"></i>Sign Out
                   </NavDropdown.Item>
                 </NavDropdown>
               </Button>
