@@ -72,7 +72,9 @@ const ShoppingList = ({ listTitle }) => {
                           <span>qty: {item.quantity}</span>
                         </Col>
                         <Col md={1}>
-                          <i className="fas fa-minus-circle"></i>
+                          <button className="item-delete-btn">
+                            <i className="fas fa-minus-circle item-delete-icon"></i>
+                          </button>
                         </Col>
                       </Row>
                     </Container>
