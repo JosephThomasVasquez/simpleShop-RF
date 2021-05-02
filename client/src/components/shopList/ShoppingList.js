@@ -40,19 +40,6 @@ const ShoppingList = ({ listTitle }) => {
     }
   }, []);
 
-  const handleRemoveItem = (e) => {
-    console.log("shopList", shopList);
-
-    const removeItem = shopList.filter((item) => {
-      console.log("item.name:", item.name);
-      return e.target.attributes.name !== item.name;
-    });
-    setShopList(removeItem);
-    console.log("removed item:", shopList);
-
-    console.log(e.target.attributes.name);
-  };
-
   const handleToggleComplete = (e) => {
     // console.log("item", e.target);
   };
@@ -73,33 +60,7 @@ const ShoppingList = ({ listTitle }) => {
                     onClick={handleToggleComplete}
                     className="item-container"
                   >
-                    <Container fluid="md">
-                      <Row>
-                        <Col md={1}>
-                          <i className="fas fa-check-circle"></i>
-                        </Col>
-                        <Col md={8}>
-                          <ListItem item={item} />
-                        </Col>
-                        <Col md={2}>
-                          <span>qty: {item.quantity}</span>
-                        </Col>
-                        <Col md={1}>
-                          <>
-                            <button
-                              className="item-delete-btn"
-                              onClick={handleRemoveItem}
-                              name={item.name}
-                            >
-                              <i
-                                className="fas fa-minus-circle item-delete-icon"
-                                name={item.name}
-                              ></i>
-                            </button>
-                          </>
-                        </Col>
-                      </Row>
-                    </Container>
+                    <ListItem item={item} />
                   </div>
                 ))
               : null}
