@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { Nav, Navbar, NavDropdown, Form, Button } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown, Button } from "react-bootstrap";
 
 const Header = () => {
   const { currentUser, signOut } = useAuth();
@@ -48,7 +48,9 @@ const Header = () => {
                 >
                   {!currentUser ? (
                     <NavDropdown.Item href="/signin">Sign In</NavDropdown.Item>
-                  ) : <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>}
+                  ) : (
+                    <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                  )}
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/" onClick={handleSignOut}>
                     Sign Out

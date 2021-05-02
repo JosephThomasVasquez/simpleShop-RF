@@ -22,7 +22,7 @@ const ShopListView = () => {
       .collection("items")
       .onSnapshot((snapshot) => {
         const data = [];
-        snapshot.docs.map((doc) => {
+        snapshot.docs.forEach((doc) => {
           data.push({ id: doc.id, ...doc.data() });
         });
         setShopItemsList(data);
@@ -49,9 +49,9 @@ const ShopListView = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "item") {
-      setItem(e.target.value);
+      setItem(value);
     } else if (name === "title") {
-      setTitle(e.target.value);
+      setTitle(value);
     }
   };
 

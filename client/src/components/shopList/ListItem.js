@@ -1,7 +1,7 @@
 import React from "react";
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { useAuth } from "../../contexts/AuthContext";
-import { auth, appFirestore } from "../../firebase/config";
+import { appFirestore } from "../../firebase/config";
 
 const ListItem = ({ item }) => {
   const { currentUser } = useAuth();
@@ -11,7 +11,7 @@ const ListItem = ({ item }) => {
 
     const toggleComplete = !item.completed;
 
-    const ref = await appFirestore
+    await appFirestore
       .collection("users")
       .doc(currentUser.uid)
       .collection("shoppingLists")

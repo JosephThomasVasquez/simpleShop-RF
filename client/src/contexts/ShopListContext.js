@@ -1,6 +1,6 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useContext } from "react";
 import { useAuth } from "../contexts/AuthContext";
-import { auth, appFirestore } from "../firebase/config";
+import { appFirestore } from "../firebase/config";
 
 const shopListContext = createContext();
 
@@ -11,10 +11,10 @@ export const useUserShopList = () => {
 
 const ShopListProvider = ({ children }) => {
   const { currentUser } = useAuth();
-  const [shopListDocs, setShopListDocs] = useState({
-    title: "Shopping List",
-    items: ["Bacon", "Eggs", "Burger Buns", "Milk", "Parmesan Cheese"],
-  });
+//   const [shopListDocs, setShopListDocs] = useState({
+//     title: "Shopping List",
+//     items: ["Bacon", "Eggs", "Burger Buns", "Milk", "Parmesan Cheese"],
+//   });
 
   console.log("currentUser", currentUser);
   // Get the shoppingList doc from Firestore from the current User Id
@@ -30,16 +30,6 @@ const ShopListProvider = ({ children }) => {
       });
       return items;
     });
-
-    // appFirestore
-    //   .collection("users")
-    //   .doc(currentUser.uid)
-    //   .get()
-    //   .then((doc) => {
-    //     let data = doc.data();
-    //     console.log("FS data", data);
-    //     return data;
-    //   });
   };
 
   // Update the shop list with data input
@@ -50,7 +40,7 @@ const ShopListProvider = ({ children }) => {
       .update({ items: item }, { merge: true });
   };
 
-  const value = { shopListDocs, getShopList, updateShopList };
+  const value = { getShopList, updateShopList };
 
   return (
     <shopListContext.Provider value={value}>

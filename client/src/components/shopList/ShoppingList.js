@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import React from "react";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import ListItem from "./ListItem";
 // import { useUserShopList } from "../../contexts/ShopListContext";
-import { useAuth } from "../../contexts/AuthContext";
-import { auth, appFirestore } from "../../firebase/config";
 
 const ShoppingList = ({ listTitle, listItems }) => {
-  const [shopList, setShopList] = useState([]);
-
   const handleSaveList = () => {};
 
   return (
