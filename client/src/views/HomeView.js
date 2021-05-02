@@ -6,6 +6,13 @@ import { useAuth } from "../contexts/AuthContext";
 
 const HomeView = () => {
   const { currentUser } = useAuth();
+
+  // Search submit methods
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+  };
+
   return (
     <div>
       <Header />
@@ -37,7 +44,7 @@ const HomeView = () => {
           <Col sm={8} md={8} lg={8}>
             <Form inline>
               <Form.Control type="text" placeholder="Search" className="" />
-              <Button type="submit">
+              <Button type="submit" onClick={handleSearch}>
                 <i className="fas fa-search"></i>
               </Button>
             </Form>
