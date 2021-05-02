@@ -15,7 +15,7 @@ const ListItem = ({ item }) => {
       .collection("shoppingLists")
       .doc("Shopping List")
       .collection("items")
-      .doc(`${item.docId}`);
+      .doc(`${item.id}`);
 
     // console.log("ref:", ref);
 

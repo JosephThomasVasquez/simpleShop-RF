@@ -11,38 +11,28 @@ const ShoppingList = ({ listTitle }) => {
 
   const { currentUser } = useAuth();
 
-  const getList = async () => {
-    const ref = await appFirestore
+  // const getList = () => {};
+
+  useEffect(() => {
+    const unsubscribe = appFirestore
       .collection("users")
       .doc(currentUser.uid)
       .collection("shoppingLists")
       .doc("Shopping List")
       .collection("items")
-      .get();
-    // console.log("ref:", ref);
-
-    try {
-      let snapshot = ref.docs.map((doc) => {
-        let docId = doc.id;
-        const data = { docId, ...doc.data() };
-
-        return data;
+      .onSnapshot((snapshot) => {
+        const data = [];
+        snapshot.docs.map((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+          setShopList(data);
+        });
+        console.log("shopList", shopList);
       });
-
-      console.log("snapshot:", snapshot);
-      setShopList(snapshot);
-      return snapshot;
-    } catch (error) {
-      console.log("Error:", error);
-    }
-  };
-
-  useEffect(() => {
-    getList();
 
     if (shopList.length > 0) {
       console.log("Shop List FS:", shopList[0]);
     }
+    return () => unsubscribe;
   }, []);
 
   const handleToggleComplete = (e) => {
