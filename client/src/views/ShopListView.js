@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
 import ShoppingList from "../components/shopList/ShoppingList";
 import { useAuth } from "../contexts/AuthContext";
-import { appFirestore, auth } from "../firebase/config";
+import { appFirestore } from "../firebase/config";
 
 const ShopListView = () => {
   const { currentUser } = useAuth();
