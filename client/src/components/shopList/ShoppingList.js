@@ -5,35 +5,9 @@ import ListItem from "./ListItem";
 import { useAuth } from "../../contexts/AuthContext";
 import { auth, appFirestore } from "../../firebase/config";
 
-const ShoppingList = ({ listTitle }) => {
+const ShoppingList = ({ listTitle, listItems }) => {
   // const { getShopList, updateShopList } = useUserShopList();
   const [shopList, setShopList] = useState([]);
-
-  const { currentUser } = useAuth();
-
-  // const getList = () => {};
-
-  useEffect(() => {
-    const unsubscribe = appFirestore
-      .collection("users")
-      .doc(currentUser.uid)
-      .collection("shoppingLists")
-      .doc("Shopping List")
-      .collection("items")
-      .onSnapshot((snapshot) => {
-        const data = [];
-        snapshot.docs.map((doc) => {
-          data.push({ id: doc.id, ...doc.data() });
-          setShopList(data);
-        });
-        console.log("shopList", shopList);
-      });
-
-    if (shopList.length > 0) {
-      console.log("Shop List FS:", shopList[0]);
-    }
-    return () => unsubscribe;
-  }, []);
 
   const handleToggleComplete = (e) => {
     // console.log("item", e.target);
@@ -48,17 +22,16 @@ const ShoppingList = ({ listTitle }) => {
           <Card.Title className="text-center">{listTitle}</Card.Title>
 
           <ul>
-            {shopList !== undefined
-              ? shopList.map((item) => (
-                  <div
-                    key={item.key}
-                    onClick={handleToggleComplete}
-                    className="item-container"
-                  >
-                    <ListItem item={item} />
-                  </div>
-                ))
-              : null}
+            {listItems &&
+              listItems.map((item) => (
+                <div
+                  key={item.key}
+                  onClick={handleToggleComplete}
+                  className="item-container"
+                >
+                  <ListItem item={item} />
+                </div>
+              ))}
           </ul>
 
           <Container fluid="md">

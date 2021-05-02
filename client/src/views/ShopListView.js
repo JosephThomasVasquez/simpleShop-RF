@@ -14,11 +14,30 @@ const ShopListView = () => {
 
   const [item, setItem] = useState("");
   const [title, setTitle] = useState("Shopping List");
-  const [shopItemsList, setShopItemsList] = useState({});
+  const [shopItemsList, setShopItemsList] = useState([]);
   const { firestoreDocs } = FirestoreGetCollection(currentUser.uid);
-  // console.log(shopItemsList);
 
-  useEffect(() => {}, []);
+
+  // Get snapshot update from docs
+  const updateFSDocs = () => {
+    return appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("shoppingLists")
+      .doc("Shopping List")
+      .collection("items")
+      .onSnapshot((snapshot) => {
+        const data = [];
+        snapshot.docs.map((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+        setShopItemsList(data);
+      });
+  };
+
+  useEffect(() => {
+    updateFSDocs();
+  }, []);
 
   const updateShopList = async (item) => {
     console.log("item:", item);
@@ -31,7 +50,6 @@ const ShopListView = () => {
       .collection("items");
 
     return ref.add(item);
-    // await ref.update({ items: item }, { merge: true });
   };
 
   const handleChange = (e) => {
@@ -49,12 +67,7 @@ const ShopListView = () => {
     if (title === "" || title === undefined) {
       setTitle("Shopping List");
     }
-    // setShopItemsList({
-    //   name: item,
-    //   quantity: 1,
-    //   completed: false,
-    //   key: Date.now(),
-    // });
+
     console.log("shopItemsList:", shopItemsList);
     console.log("title:", title);
 
@@ -66,27 +79,8 @@ const ShopListView = () => {
     };
 
     updateShopList(data);
+    setItem("");
     setShopItemsList("");
-
-    // setShopItemsList("");
-  };
-
-  const addToFirestore = async (e) => {
-    e.preventDefault();
-    console.log("test");
-
-    // const fakeId = "yxh123898sfsfj";
-
-    // const docRef = await appFirestore
-    //   .collection("users/Kxg6FWVE1CMpNGmCgUQk/shoppingLists")
-    //   .add({
-    //     id: fakeId,
-    //     name: data[0].name,
-    //     category: data[0].category,
-    //     type: data[0].type,
-    //     count: data[0].count,
-    //   });
-    // await console.log("getDoc", docRef.get());
   };
 
   return (
@@ -97,22 +91,24 @@ const ShopListView = () => {
         <Row>
           <Col md={6}>
             <Form onSubmit={handleAddItem}>
-              <Form.Group controlId="addTitle">
+              <Form.Group>
                 <Form.Label>Title your List</Form.Label>
                 <Form.Control
                   type="text"
                   name="title"
                   placeholder="Title, Store, Location..."
                   onChange={handleChange}
+                  value={title}
                 />
               </Form.Group>
-              <Form.Group controlId="addItemInput">
+              <Form.Group>
                 <Form.Label>Add items to your list here:</Form.Label>
                 <Form.Control
                   type="text"
                   name="item"
                   placeholder="Item, Product, Location "
                   onChange={handleChange}
+                  value={item}
                 />
               </Form.Group>
               <Button
@@ -125,7 +121,7 @@ const ShopListView = () => {
             </Form>
           </Col>
           <Col md={6}>
-            <ShoppingList listTitle={title} />
+            <ShoppingList listTitle={title} listItems={shopItemsList} />
             Item: {JSON.stringify(item)}
           </Col>
           <Col md={12}>shopItemsList: {JSON.stringify(shopItemsList)}</Col>
