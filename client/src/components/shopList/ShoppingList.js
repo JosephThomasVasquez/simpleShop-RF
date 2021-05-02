@@ -33,7 +33,7 @@ const ShoppingList = ({ listTitle, listItems }) => {
                 </Button>
               </Col>
               <Col md={6} sm={3}>
-                <Button variant="danger" className="gradient-buttons">
+                <Button variant="danger" className="gradient-buttons list-delete-btn">
                   Delete
                 </Button>
               </Col>
