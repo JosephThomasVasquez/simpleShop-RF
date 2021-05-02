@@ -7,8 +7,19 @@ const ListItem = ({ item }) => {
   const { currentUser } = useAuth();
   console.log(item);
 
-  const handleToggleComplete = (e) => {
+  const handleToggleComplete = async (e) => {
     console.log("item", e.target);
+
+    const toggleComplete = !item.completed;
+
+    const ref = await appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("shoppingLists")
+      .doc("Shopping List")
+      .collection("items")
+      .doc(`${item.id}`)
+      .set({ ...item, id: item.id, completed: toggleComplete });
   };
 
   const handleRemoveItem = async (e) => {
@@ -29,20 +40,20 @@ const ListItem = ({ item }) => {
     }
   };
   return (
-    <Container fluid="md">
+    <Container fluid>
       <Row>
-        <Col md={1}>
+        <Col md={1} xs={1}>
           <i className="fas fa-check-circle"></i>
         </Col>
-        <Col md={8} onClick={handleToggleComplete}>
+        <Col md={8} xs={7} onClick={handleToggleComplete}>
           <div className="item-li" name={item.id}>
-            {item.name}
+            {item.name} {JSON.stringify(item.completed)}
           </div>
         </Col>
-        <Col md={2}>
+        <Col md={2} xs={3}>
           <span>qty: {item.quantity}</span>
         </Col>
-        <Col md={1}>
+        <Col md={1} xs={1}>
           <>
             <button
               className="item-delete-btn"

@@ -27,7 +27,7 @@ const ShoppingList = ({ listTitle, listItems }) => {
 
           <Container fluid="md">
             <Row>
-              <Col md={6}>
+              <Col md={6} sm={3}>
                 <Button
                   variant="primary"
                   className="gradient-buttons"
@@ -36,7 +36,7 @@ const ShoppingList = ({ listTitle, listItems }) => {
                   Save
                 </Button>
               </Col>
-              <Col md={6}>
+              <Col md={6} sm={3}>
                 <Button variant="danger" className="gradient-buttons">
                   Delete
                 </Button>
