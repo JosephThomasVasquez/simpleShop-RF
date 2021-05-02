@@ -7,8 +7,11 @@ const ListItem = ({ item }) => {
   const { currentUser } = useAuth();
   console.log(item);
 
-  const handleRemoveItem = async (e) => {
+  const handleToggleComplete = (e) => {
+    console.log("item", e.target);
+  };
 
+  const handleRemoveItem = async (e) => {
     const ref = await appFirestore
       .collection("users")
       .doc(currentUser.uid)
@@ -16,8 +19,6 @@ const ListItem = ({ item }) => {
       .doc("Shopping List")
       .collection("items")
       .doc(`${item.id}`);
-
-    // console.log("ref:", ref);
 
     try {
       let snapshot = ref.delete();
@@ -33,8 +34,10 @@ const ListItem = ({ item }) => {
         <Col md={1}>
           <i className="fas fa-check-circle"></i>
         </Col>
-        <Col md={8}>
-          <li className="item-li">{item.name}</li>
+        <Col md={8} onClick={handleToggleComplete}>
+          <div className="item-li" name={item.id}>
+            {item.name}
+          </div>
         </Col>
         <Col md={2}>
           <span>qty: {item.quantity}</span>

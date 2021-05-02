@@ -83,7 +83,6 @@ ul {
 .item-delete-btn:hover {
   color: red;
   transform: scale(1.5);
-  transform: rotate(360deg);
   opacity: 1;
   transition: all 0.25s;
 }

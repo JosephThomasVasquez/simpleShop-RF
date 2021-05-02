@@ -6,12 +6,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { auth, appFirestore } from "../../firebase/config";
 
 const ShoppingList = ({ listTitle, listItems }) => {
-  // const { getShopList, updateShopList } = useUserShopList();
   const [shopList, setShopList] = useState([]);
-
-  const handleToggleComplete = (e) => {
-    // console.log("item", e.target);
-  };
 
   const handleSaveList = () => {};
 
@@ -24,11 +19,7 @@ const ShoppingList = ({ listTitle, listItems }) => {
           <ul>
             {listItems &&
               listItems.map((item) => (
-                <div
-                  key={item.key}
-                  onClick={handleToggleComplete}
-                  className="item-container"
-                >
+                <div key={item.id} className="item-container">
                   <ListItem item={item} />
                 </div>
               ))}

@@ -3,20 +3,14 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Header from "../components/Header";
 import ShoppingList from "../components/shopList/ShoppingList";
 import { useAuth } from "../contexts/AuthContext";
-import FirestoreGetCollection from "../components/firebase/FirestoreGetCollection";
-// import { useUserShopList } from "../contexts/ShopListContext";
 import { appFirestore, auth } from "../firebase/config";
-import data from "../data/data";
 
 const ShopListView = () => {
   const { currentUser } = useAuth();
-  // const { getShopList, updateShopList } = useUserShopList();
 
   const [item, setItem] = useState("");
   const [title, setTitle] = useState("Shopping List");
   const [shopItemsList, setShopItemsList] = useState([]);
-  const { firestoreDocs } = FirestoreGetCollection(currentUser.uid);
-
 
   // Get snapshot update from docs
   const updateFSDocs = () => {
