@@ -94,3 +94,9 @@ ul {
   border-radius: 50%;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
+
+/* PROFILE VIEW STYLING */
+
+.profile-displayname {
+  color: #FC7A57;
+}

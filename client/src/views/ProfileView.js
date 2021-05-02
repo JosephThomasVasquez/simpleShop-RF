@@ -14,9 +14,11 @@ const ProfileView = () => {
           <Col>
             <h1>
               Hello,{" "}
-              {currentUser.displayName
-                ? currentUser.displayName
-                : currentUser.email}
+              <span className="profile-displayname">
+                {currentUser.displayName
+                  ? currentUser.displayName
+                  : currentUser.email}
+              </span>
             </h1>
           </Col>
         </Row>
