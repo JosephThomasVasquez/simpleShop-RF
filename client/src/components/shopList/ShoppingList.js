@@ -40,8 +40,21 @@ const ShoppingList = ({ listTitle }) => {
     }
   }, []);
 
+  const handleRemoveItem = (e) => {
+    console.log("shopList", shopList);
+
+    const removeItem = shopList.filter((item) => {
+      console.log("item.name:", item.name);
+      return e.target.attributes.name !== item.name;
+    });
+    setShopList(removeItem);
+    console.log("removed item:", shopList);
+
+    console.log(e.target.attributes.name);
+  };
+
   const handleToggleComplete = (e) => {
-    console.log("item", e.target);
+    // console.log("item", e.target);
   };
 
   const handleSaveList = () => {};
@@ -72,9 +85,18 @@ const ShoppingList = ({ listTitle }) => {
                           <span>qty: {item.quantity}</span>
                         </Col>
                         <Col md={1}>
-                          <button className="item-delete-btn">
-                            <i className="fas fa-minus-circle item-delete-icon"></i>
-                          </button>
+                          <>
+                            <button
+                              className="item-delete-btn"
+                              onClick={handleRemoveItem}
+                              name={item.name}
+                            >
+                              <i
+                                className="fas fa-minus-circle item-delete-icon"
+                                name={item.name}
+                              ></i>
+                            </button>
+                          </>
                         </Col>
                       </Row>
                     </Container>
