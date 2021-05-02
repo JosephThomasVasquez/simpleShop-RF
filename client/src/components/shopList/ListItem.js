@@ -5,7 +5,6 @@ import { auth, appFirestore } from "../../firebase/config";
 
 const ListItem = ({ item }) => {
   const { currentUser } = useAuth();
-  console.log(item);
 
   const handleToggleComplete = async (e) => {
     console.log("item", e.target);
@@ -33,7 +32,6 @@ const ListItem = ({ item }) => {
 
     try {
       let snapshot = ref.delete();
-      console.log("snapshot:", snapshot);
       return snapshot;
     } catch (error) {
       console.log("Error:", error);
