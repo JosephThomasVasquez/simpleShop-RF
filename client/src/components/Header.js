@@ -34,7 +34,10 @@ const Header = () => {
               ShoppingList
             </Nav.Link>
             {currentUser ? (
-              <Button variant="primary" className="user-dropdown-btn gradient-buttons">
+              <Button
+                variant="primary"
+                className="user-dropdown-btn gradient-buttons"
+              >
                 <NavDropdown
                   title={
                     currentUser.displayName
@@ -43,7 +46,9 @@ const Header = () => {
                   }
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item href="/signin">Sign In</NavDropdown.Item>
+                  {!currentUser ? (
+                    <NavDropdown.Item href="/signin">Sign In</NavDropdown.Item>
+                  ) : <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>}
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/" onClick={handleSignOut}>
                     Sign Out

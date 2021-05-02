@@ -7,7 +7,7 @@ const ProfileView = () => {
     <div>
       <Header />
       <Container className="pt-4">
-        <h1>Home View</h1>
+        <h1>Profile</h1>
       </Container>
     </div>
   );
