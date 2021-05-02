@@ -20,7 +20,14 @@
 }
 
 .nav-profile-icon {
-margin-right: 5px;
+  margin-right: 5px;
+}
+
+/* BODY STYLES BG and STUFF */
+
+body {
+  background-image: url(./images/geometric-leaves.png);
+  background-repeat: repeat;
 }
 
 /* SIGN IN STYLES */
@@ -102,5 +109,5 @@ ul {
 /* PROFILE VIEW STYLING */
 
 .profile-displayname {
-  color: #FC7A57;
+  color: #fc7a57;
 }
