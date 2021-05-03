@@ -63,7 +63,7 @@ const ListItem = ({ item }) => {
               item.completed
                 ? {
                     textDecoration: "line-through",
-                    color: "rgba(252, 122, 87, 0.5)",
+                    color: "rgba(252, 122, 87, 0.75)",
                     transition: "all 1s",
                   }
                 : { textDecoration: "none", transition: "all 1s" }
