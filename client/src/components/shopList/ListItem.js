@@ -42,15 +42,16 @@ const ListItem = ({ item }) => {
       <Row>
         <Col md={1} xs={1}>
           <i
-            className="fas fa-check-circle completed-icon"
+            className="fas fa-check-circle item-completed-icon"
             style={
               item.completed
                 ? {
-                    textDecoration: "line-through",
+                    opacity: "1",
                     color: "rgba(252, 122, 87, 1)",
+                    transform: "scale(1.5)",
                     transition: "all 1s",
                   }
-                : { textDecoration: "none" }
+                : { opacity: "0.1", transition: "all 1s" }
             }
           ></i>
         </Col>
@@ -65,7 +66,7 @@ const ListItem = ({ item }) => {
                     color: "rgba(252, 122, 87, 0.5)",
                     transition: "all 1s",
                   }
-                : { textDecoration: "none" }
+                : { textDecoration: "none", transition: "all 1s" }
             }
           >
             {item.name}
@@ -80,7 +81,7 @@ const ListItem = ({ item }) => {
                     color: "rgba(252, 122, 87, 0.5)",
                     transition: "all 1s",
                   }
-                : { textDecoration: "none" }
+                : { textDecoration: "none", transition: "all 1s" }
             }
           >
             qty: {item.quantity}

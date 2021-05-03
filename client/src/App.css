@@ -128,6 +128,11 @@ ul {
   transition: all 0.25s;
 }
 
+.item-completed-icon {
+  opacity: 0.1;
+  transform: scale(1);
+}
+
 .item-delete-icon {
   font-size: 1.5em;
   margin: 0;
