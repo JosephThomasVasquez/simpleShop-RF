@@ -5,6 +5,7 @@ import "./App.css";
 import AuthProvider from "./contexts/AuthContext";
 import ShopListProvider from "./contexts/ShopListContext";
 import AuthRoute from "./components/AuthRoute";
+import Header from "./components/Header";
 import HomeView from "./views/HomeView";
 import SignInView from "./views/SignInView";
 import SignUpView from "./views/SignUpView";
@@ -15,6 +16,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
+        <Header />
         <Switch>
           <Route exact path="/" component={HomeView} />
           <Route exact path="/signin" component={SignInView} />

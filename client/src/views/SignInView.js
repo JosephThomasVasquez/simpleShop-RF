@@ -30,7 +30,6 @@ const SignInView = () => {
 
   return (
     <div>
-      <Header />
       <Container>
         <h1 className="pt-5">Sign In</h1>
         <Row>

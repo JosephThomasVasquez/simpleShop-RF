@@ -15,7 +15,6 @@ const HomeView = () => {
 
   return (
     <div>
-      <Header />
       {!currentUser && (
         <Container className="py-4 my-4 bg-white shadow">
           <h1>ShopList</h1>

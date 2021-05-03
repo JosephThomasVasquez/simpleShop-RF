@@ -8,7 +8,6 @@ const ProfileView = () => {
   const { currentUser } = useAuth();
   return (
     <div>
-      <Header />
       <Container className="pt-4">
         <Row>
           <Col>

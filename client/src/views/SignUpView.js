@@ -33,7 +33,6 @@ const SignUpView = () => {
   };
   return (
     <div>
-      <Header />
       <Container>
         <h1 className="pt-5">Sign Up</h1>
 

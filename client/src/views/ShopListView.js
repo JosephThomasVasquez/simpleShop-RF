@@ -79,7 +79,6 @@ const ShopListView = () => {
 
   return (
     <div>
-      <Header />
       <Container>
         <h1 className="pt-5">Shopping List</h1>
         <Row>
