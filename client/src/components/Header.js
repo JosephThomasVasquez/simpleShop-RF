@@ -21,10 +21,12 @@ const Header = () => {
         expand="lg"
         className="gradient-header"
       >
-        <Navbar.Brand href="/">
-          <i className="far fa-clipboard icon-brand"></i>
-          <span className="ml-3 align-text-bottom brand-title">ShopList</span>
-        </Navbar.Brand>
+        <LinkContainer to="/">
+          <Navbar.Brand href="/">
+            <i className="far fa-clipboard icon-brand"></i>
+            <span className="ml-3 align-text-bottom brand-title">ShopList</span>
+          </Navbar.Brand>
+        </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
