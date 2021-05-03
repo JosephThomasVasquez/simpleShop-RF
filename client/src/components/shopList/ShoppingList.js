@@ -15,7 +15,14 @@ const ShoppingList = ({ listTitle, listItems }) => {
           <ul>
             {listItems &&
               listItems.map((item) => (
-                <div key={item.id} className="item-container">
+                <div key={item.id} className="item-container" style={
+                  item.completed
+                    ? {
+                        background: "rgba(255, 210, 117, 0.1)",
+                        transition: "all 1s",
+                      }
+                    : null
+                }>
                   <ListItem item={item} />
                 </div>
               ))}

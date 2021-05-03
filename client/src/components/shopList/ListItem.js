@@ -41,7 +41,9 @@ const ListItem = ({ item }) => {
     <Container fluid>
       <Row>
         <Col md={1} xs={1}>
-          <i className="fas fa-check-circle completed-icon" style={
+          <i
+            className="fas fa-check-circle completed-icon"
+            style={
               item.completed
                 ? {
                     textDecoration: "line-through",
@@ -49,7 +51,8 @@ const ListItem = ({ item }) => {
                     transition: "all 1s",
                   }
                 : { textDecoration: "none" }
-            }></i>
+            }
+          ></i>
         </Col>
         <Col md={8} xs={7} onClick={handleToggleComplete}>
           <div
@@ -69,7 +72,19 @@ const ListItem = ({ item }) => {
           </div>
         </Col>
         <Col md={2} xs={3}>
-          <span>qty: {item.quantity}</span>
+          <span
+            style={
+              item.completed
+                ? {
+                    textDecoration: "line-through",
+                    color: "rgba(252, 122, 87, 0.5)",
+                    transition: "all 1s",
+                  }
+                : { textDecoration: "none" }
+            }
+          >
+            qty: {item.quantity}
+          </span>
         </Col>
         <Col md={1} xs={1}>
           <>
