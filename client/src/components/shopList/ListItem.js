@@ -41,11 +41,31 @@ const ListItem = ({ item }) => {
     <Container fluid>
       <Row>
         <Col md={1} xs={1}>
-          <i className="fas fa-check-circle"></i>
+          <i className="fas fa-check-circle completed-icon" style={
+              item.completed
+                ? {
+                    textDecoration: "line-through",
+                    color: "rgba(252, 122, 87, 1)",
+                    transition: "all 1s",
+                  }
+                : { textDecoration: "none" }
+            }></i>
         </Col>
         <Col md={8} xs={7} onClick={handleToggleComplete}>
-          <div className="item-li" name={item.id}>
-            {item.name} {JSON.stringify(item.completed)}
+          <div
+            className="item-li"
+            name={item.id}
+            style={
+              item.completed
+                ? {
+                    textDecoration: "line-through",
+                    color: "rgba(252, 122, 87, 0.5)",
+                    transition: "all 1s",
+                  }
+                : { textDecoration: "none" }
+            }
+          >
+            {item.name}
           </div>
         </Col>
         <Col md={2} xs={3}>
