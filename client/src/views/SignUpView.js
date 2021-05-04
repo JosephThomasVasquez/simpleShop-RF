@@ -32,8 +32,8 @@ const SignUpView = () => {
   };
   return (
     <div>
-      <Container>
-        <h1 className="pt-5">Sign Up</h1>
+      <Container className="py-4 my-4 bg-white shadow">
+        <h1>Sign Up</h1>
 
         <Row>
           <Col md={12}>
