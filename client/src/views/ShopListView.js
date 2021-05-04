@@ -14,7 +14,7 @@ const ShopListView = () => {
 
   // Get snapshot update from docs
   const updateFSDocs = () => {
-    return appFirestore
+    const unsubscribe = appFirestore
       .collection("users")
       .doc(currentUser.uid)
       .collection("shoppingLists")
@@ -27,10 +27,26 @@ const ShopListView = () => {
         });
         setShopItemsList(data);
       });
+
+    return () => unsubscribe();
   };
 
   useEffect(() => {
-    updateFSDocs();
+    const unsubscribe = appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("shoppingLists")
+      .doc("Shopping List")
+      .collection("items")
+      .onSnapshot((snapshot) => {
+        const data = [];
+        snapshot.docs.forEach((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+        setShopItemsList(data);
+      });
+
+    return () => unsubscribe();
   }, []);
 
   const updateShopList = async (item) => {
@@ -97,7 +113,9 @@ const ShopListView = () => {
                 />
               </Form.Group>
               <Form.Group>
-                <Form.Label><span className="form-label-color">Add items here:</span></Form.Label>
+                <Form.Label>
+                  <span className="form-label-color">Add items here:</span>
+                </Form.Label>
                 <Form.Control
                   type="text"
                   name="item"
