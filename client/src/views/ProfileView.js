@@ -47,7 +47,7 @@ const ProfileView = () => {
               </Form.Group>
               <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" name="email" placeholder="email" />
+                <Form.Control type="email" name="email" placeholder="email" value={currentUser.email} />
               </Form.Group>
               <Form.Group id="password">
                 <Form.Label>Password</Form.Label>
@@ -59,7 +59,7 @@ const ProfileView = () => {
               </Form.Group>
               <Row className="ml-auto">
                 <Button
-                  variant="primary"
+                  variant="secondary"
                   type="submit"
                   className="gradient-buttons"
                 >
