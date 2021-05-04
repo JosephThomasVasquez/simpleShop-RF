@@ -34,8 +34,7 @@ const SignUpView = () => {
     <div>
       <Container className="py-4 my-4 bg-white shadow">
         <h1>Sign Up</h1>
-
-        <Row>
+        <Row className="mt-5">
           <Col md={12}>
             <Form onSubmit={handleSignUp}>
               <Form.Group id="email">

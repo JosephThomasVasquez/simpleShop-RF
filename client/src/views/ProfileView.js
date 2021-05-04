@@ -12,7 +12,7 @@ const ProfileView = () => {
   return (
     <div>
       <Container className="pt-4">
-        <Row>
+        <Row className="mb-5">
           <Col>
             <h1>
               Hello,{" "}
