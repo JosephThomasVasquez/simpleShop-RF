@@ -7,8 +7,6 @@ const ListItem = ({ item }) => {
   const { currentUser } = useAuth();
 
   const handleToggleComplete = async (e) => {
-    console.log("item", e.target);
-
     const toggleComplete = !item.completed;
 
     await appFirestore

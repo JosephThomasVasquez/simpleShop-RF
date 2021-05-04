@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import Header from "../components/Header";
 
 const SignUpView = () => {
   const emailRef = useRef();

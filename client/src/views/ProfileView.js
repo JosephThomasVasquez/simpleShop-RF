@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 // import { auth, appFirestore } from "../firebase/config";
