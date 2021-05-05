@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 import ShoppingList from "../components/shopList/ShoppingList";
 import { useAuth } from "../contexts/AuthContext";
-import { appFirestore } from "../firebase/config";
+import { appFirestore, timestamp } from "../firebase/config";
 
 const ShopListView = () => {
   const { currentUser } = useAuth();
@@ -31,6 +31,7 @@ const ShopListView = () => {
     return () => unsubscribe();
   }, []);
 
+  // Add item as a firestore document to the collection
   const updateShopList = async (item) => {
     console.log("item:", item);
 
@@ -41,7 +42,7 @@ const ShopListView = () => {
       .doc(title)
       .collection("items");
 
-    return ref.add(item);
+    return ref.add({ ...item, createdAt: timestamp });
   };
 
   const handleChange = (e) => {
