@@ -20,6 +20,7 @@ const ShopListView = () => {
       .collection("shoppingLists")
       .doc("Shopping List")
       .collection("items")
+      .orderBy("createdAt")
       .onSnapshot((snapshot) => {
         const data = [];
         snapshot.docs.forEach((doc) => {
