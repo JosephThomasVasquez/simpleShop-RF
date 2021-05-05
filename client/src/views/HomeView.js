@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import RecipeList from "../components/recipes/RecipeList";
 import { useAuth } from "../contexts/AuthContext";
 
 const HomeView = () => {
@@ -46,6 +47,11 @@ const HomeView = () => {
                 <i className="fas fa-search"></i>
               </Button>
             </Form>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm={4} md={3} lg={2}>
+            <RecipeList />
           </Col>
         </Row>
       </Container>
