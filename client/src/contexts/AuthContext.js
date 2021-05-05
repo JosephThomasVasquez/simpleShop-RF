@@ -22,6 +22,7 @@ const AuthProvider = ({ children }) => {
       // Add user id to Firestore and set empty shoppingList
 
       const userData = {
+        userAccount: `emailUser=${email}`,
         userName: "",
         email: email,
         isAdmin: false,
