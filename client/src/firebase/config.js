@@ -38,10 +38,21 @@ const signInWithGoogle = () => {
 
           // Create one with user.uid and add empty shoppingLists array document
           if (doc.data() === undefined) {
-            return appFirestore
-              .collection("users")
-              .doc(res.user.uid)
-              .set({ shoppingLists: [] });
+            const userData = {
+              userAccount: `googleUser=${res.user.email}`,
+              userName: res.user.displayName,
+              email: res.user.email,
+              isAdmin: false,
+              isSubscriber: false,
+              createdAt: timestamp,
+            };
+
+            return appFirestore.collection("users").doc(res.user.uid).set(userData);
+
+            // return appFirestore
+            //   .collection("users")
+            //   .doc(res.user.uid)
+            //   .set({ shoppingLists: [] });
           }
         });
     })

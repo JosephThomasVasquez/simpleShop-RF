@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { auth, appFirestore } from "../firebase/config";
+import { auth, appFirestore, timestamp } from "../firebase/config";
 
 const AuthContext = React.createContext();
 
@@ -27,6 +27,7 @@ const AuthProvider = ({ children }) => {
         email: email,
         isAdmin: false,
         isSubscriber: false,
+        createdAt: timestamp,
       };
 
       appFirestore.collection("users").doc(cred.user.uid).set(userData);
