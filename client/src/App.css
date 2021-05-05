@@ -101,6 +101,7 @@ body {
 .item-container:hover {
   background-color: rgba(252, 122, 87, 0.25);
   transition: all 0.5s;
+  cursor: pointer;
 }
 
 ul {
