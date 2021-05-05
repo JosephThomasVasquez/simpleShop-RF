@@ -21,12 +21,10 @@ const Header = () => {
         expand="lg"
         className="gradient-header"
       >
-        <LinkContainer to="/">
-          <Navbar.Brand href="/">
-            <i className="far fa-clipboard icon-brand"></i>
-            <span className="ml-3 align-text-bottom brand-title">ShopList</span>
-          </Navbar.Brand>
-        </LinkContainer>
+        <Navbar.Brand href="/">
+          <i className="far fa-clipboard icon-brand"></i>
+          <span className="ml-3 align-text-bottom brand-title">ShopList</span>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
@@ -53,6 +51,13 @@ const Header = () => {
                   }
                   id="basic-nav-dropdown"
                 >
+                  {currentUser.isAdmin && (
+                    <LinkContainer to="/admin">
+                      <NavDropdown.Item href="/admin">
+                        <i className="fas fa-user nav-profile-icon"></i>Admin
+                      </NavDropdown.Item>
+                    </LinkContainer>
+                  )}
                   {currentUser && (
                     <LinkContainer to="/profile">
                       <NavDropdown.Item href="/profile">
@@ -60,6 +65,7 @@ const Header = () => {
                       </NavDropdown.Item>
                     </LinkContainer>
                   )}
+
                   <NavDropdown.Divider />
                   <LinkContainer to="/">
                     <NavDropdown.Item href="/" onClick={handleSignOut}>
