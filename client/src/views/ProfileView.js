@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import googleLogo from "../icons/Google__G__Logo.svg.png";
-// import { auth, appFirestore } from "../firebase/config";
+import { auth, appFirestore } from "../firebase/config";
 
 const ProfileView = () => {
   const { currentUser } = useAuth();
+  const [userDetails, setUserDetails] = useState({
+    userAccount: `emailUser=${currentUser.email}`,
+    userName: "",
+    email: currentUser.email,
+    isAdmin: false,
+    isSubscriber: false,
+  });
+
+  useEffect(() => {
+    const unsubscribe = appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("shoppingLists")
+      .doc("Shopping List")
+      .collection("items")
+      .orderBy("createdAt")
+      .onSnapshot((snapshot) => {
+        const data = [];
+        snapshot.docs.forEach((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+        setUserDetails(data);
+      });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log("name/value:", name, value);
+  };
 
   const handleUpdateProfile = (e) => {};
 
@@ -43,11 +74,19 @@ const ProfileView = () => {
                   type="text"
                   name="displayName"
                   placeholder="Displayname"
+                  value={userDetails.userName}
+                  onChange={handleChange}
                 />
               </Form.Group>
               <Form.Group id="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" name="email" placeholder="email" value={currentUser.email} />
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="email"
+                  value={userDetails.email}
+                  onChange={handleChange}
+                />
               </Form.Group>
               <Form.Group id="password">
                 <Form.Label>Password</Form.Label>
@@ -55,6 +94,7 @@ const ProfileView = () => {
                   type="password"
                   name="password"
                   placeholder="password"
+                  onChange={handleChange}
                 />
               </Form.Group>
               <Row className="ml-auto">
