@@ -13,24 +13,6 @@ const ShopListView = () => {
   const [shopItemsList, setShopItemsList] = useState([]);
 
   // Get snapshot update from docs
-  const updateFSDocs = () => {
-    const unsubscribe = appFirestore
-      .collection("users")
-      .doc(currentUser.uid)
-      .collection("shoppingLists")
-      .doc("Shopping List")
-      .collection("items")
-      .onSnapshot((snapshot) => {
-        const data = [];
-        snapshot.docs.forEach((doc) => {
-          data.push({ id: doc.id, ...doc.data() });
-        });
-        setShopItemsList(data);
-      });
-
-    return () => unsubscribe();
-  };
-
   useEffect(() => {
     const unsubscribe = appFirestore
       .collection("users")
