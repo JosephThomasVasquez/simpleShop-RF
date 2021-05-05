@@ -31,6 +31,7 @@ const SignInView = () => {
   return (
     <div>
       <Container className="py-4 my-4 bg-white shadow">
+        
         <Row>
           <Col>
             <h1>Sign In</h1>
@@ -39,7 +40,7 @@ const SignInView = () => {
         {signInError && (
           <Row>
             <Col>
-              <ErrorMessage errorMsg={signInError}/>
+              <ErrorMessage errorMsg={signInError} />
             </Col>
           </Row>
         )}
