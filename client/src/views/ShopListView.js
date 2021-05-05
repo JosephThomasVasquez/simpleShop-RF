@@ -69,7 +69,6 @@ const ShopListView = () => {
       name: item,
       quantity: 1,
       completed: false,
-      key: Date.now(),
     };
 
     updateShopList(data);
@@ -121,7 +120,9 @@ const ShopListView = () => {
             <ShoppingList listTitle={title} listItems={shopItemsList} />
             Item: {JSON.stringify(item)}
           </Col>
-          <Col md={12}>shopItemsList: {JSON.stringify(shopItemsList)}</Col>
+          <Col md={12} style={{ color: "white" }}>
+            shopItemsList: {JSON.stringify(shopItemsList)}
+          </Col>
         </Row>
       </Container>
     </div>

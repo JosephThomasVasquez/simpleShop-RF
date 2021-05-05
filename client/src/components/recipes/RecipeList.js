@@ -4,9 +4,11 @@ const RecipeList = () => {
 
     // Create state hook for API data
 
+    // Get search query for API
+
     // Fetch API with headers
 
-    // Update state with API data
+    // Update state with API data from query
 
     return (
         <div>
