@@ -3,6 +3,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import { signInWithGoogle } from "../firebase/config";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import ErrorMessage from "../components/ErrorMessage";
 import googleLogo from "../icons/Google__G__Logo.svg.png";
 
 const SignInView = () => {
@@ -30,7 +31,19 @@ const SignInView = () => {
   return (
     <div>
       <Container className="py-4 my-4 bg-white shadow">
-        <h1>Sign In</h1>
+        <Row>
+          <Col>
+            <h1>Sign In</h1>
+          </Col>
+        </Row>
+        {signInError && (
+          <Row>
+            <Col>
+              <ErrorMessage errorMsg={signInError}/>
+            </Col>
+          </Row>
+        )}
+
         <Row className="mt-5">
           <Col md={12}>
             <Form onSubmit={handleSignIn}>
@@ -53,7 +66,11 @@ const SignInView = () => {
                 />
               </Form.Group>
               <Row className="ml-auto">
-                <Button variant="primary" type="submit" className="gradient-buttons">
+                <Button
+                  variant="primary"
+                  type="submit"
+                  className="gradient-buttons"
+                >
                   Sign In
                 </Button>
                 <Button
@@ -61,7 +78,12 @@ const SignInView = () => {
                   className="ml-2 google-btn gradient-buttons"
                   onClick={signInWithGoogle}
                 >
-                  <img src={googleLogo} width="24px" alt="Google Sign In Button" className="img-google-btn"/>
+                  <img
+                    src={googleLogo}
+                    width="24px"
+                    alt="Google Sign In Button"
+                    className="img-google-btn"
+                  />
                   Sign In with Google
                 </Button>
                 <Link to="/signup" className="mr-3 ml-auto">
