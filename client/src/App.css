@@ -148,6 +148,18 @@ ul {
   background: rgba(255, 255, 255, 0);
   color: rgba(252, 122, 87, 1);
   float: right;
+  transition: all 0.25s;
+}
+
+.list-delete-btn:hover {
+  height: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  background: rgba(252, 122, 87, 0.1);
+  color: rgba(252, 122, 87, 1);
+  float: right;
+  transition: all 0.25s;
 }
 
 /* PROFILE VIEW STYLING */
