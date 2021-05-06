@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import unirest from "unirest";
 
 const RecipeList = () => {
   const [recipesList, setRecipesList] = useState();
@@ -17,7 +18,7 @@ const RecipeList = () => {
     });
   };
 
-  getRecipes();
+//   getRecipes();
 
   // Create state hook for API data
 
