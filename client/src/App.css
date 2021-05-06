@@ -142,6 +142,14 @@ ul {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
 
+.list-delete-btn {
+  height: 100%;
+  border: none;
+  background: rgba(255, 255, 255, 0);
+  color: rgba(252, 122, 87, 1);
+  float: right;
+}
+
 /* PROFILE VIEW STYLING */
 
 .profile-displayname {
