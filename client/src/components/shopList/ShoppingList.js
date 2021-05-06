@@ -10,7 +10,7 @@ const ShoppingList = ({ listTitle, listItems }) => {
     <div>
       <Card className="gradient-buttons shadow">
         <Card.Body>
-          <Card.Title className="text-center">{listTitle}</Card.Title>
+          <Card.Title className="text-center"><h4>{listTitle}</h4></Card.Title>
 
           <ul>
             {listItems &&
@@ -29,7 +29,7 @@ const ShoppingList = ({ listTitle, listItems }) => {
           </ul>
 
           <Container fluid="md">
-            <Row>
+            <Row className="mt-4">
               <Col md={6} sm={3}>
                 <Button
                   variant="primary"
