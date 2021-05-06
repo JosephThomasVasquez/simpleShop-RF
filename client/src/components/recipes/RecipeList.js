@@ -5,22 +5,37 @@ const RecipeList = () => {
   const [recipesList, setRecipesList] = useState();
 
   const getRecipes = () => {
-    fetch("https://tasty.p.rapidapi.com/recipes/auto-complete", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-rapidapi-key": "b2f5ac83famshe8f912d34765e81p13d57ajsn49a745a48b65",
-        "x-rapidapi-host": "tasty.p.rapidapi.com",
-        useQueryString: true,
-      },
-    }).then((response) => {
-      console.log(response.json);
+    const req = unirest("GET", "https://tasty.p.rapidapi.com/recipes/list");
+
+    req.query({ "from": "0"," size": "20", "tags": "under_30_minutes" });
+
+    req.headers({
+      "x-rapidapi-key": `${process.env.REACT_APP_TASTY_API_KEY}`,
+      "x-rapidapi-host": "tasty.p.rapidapi.com",
+      "useQueryString": true,
+      "credentials": "include",
     });
+
+    req.end(function (res) {
+      if (res.error) throw new Error(res.error);
+
+      console.log(res.body);
+    });
+
+    // fetch("https://tasty.p.rapidapi.com/recipes/auto-complete", {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "x-rapidapi-key": "b2f5ac83famshe8f912d34765e81p13d57ajsn49a745a48b65",
+    //     "x-rapidapi-host": "tasty.p.rapidapi.com",
+    //     useQueryString: true,
+    //   },
+    // }).then((response) => {
+    //   console.log(response.json);
+    // });
   };
 
 //   getRecipes();
-
-  // Create state hook for API data
 
   // Get search query for API
 
