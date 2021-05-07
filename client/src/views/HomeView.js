@@ -43,7 +43,7 @@ const HomeView = () => {
     // }
 
     await fetch(
-      "https://api.edamam.com/search?q=chicken&app_id=7df02cec&app_key=ee39c6bef3f066b2b6322ba81d22625d",
+      `https://api.edamam.com/search?q=chicken&app_id=${process.env.REACT_APP_EDAMAM_API_ID}&app_key=${process.env.REACT_APP_EDAMAM_API_KEY}`,
       {
         method: "GET",
         headers: {
