@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import RecipeItem from "./RecipeItem";
 
-const RecipeList = ({ searchRecipes }) => {
-
+const RecipeList = ({ searchRecipes, searchTerm }) => {
   const { results } = searchRecipes;
-  console.log("searchRecipes", results);
 
   return (
-    <Container>
-      <h2>{results.length > 0 ? "Search Results:" : "Ey Yo!"}</h2>
+    <Container fluid>
+      <Row className="my-2">
+        <h5>{results ? `Search results for: ${searchTerm}` : "Ey Yo!"}</h5>
+      </Row>
       <Row>
-        {results.length > 0 &&
-          results.map((item) => <RecipeItem recipe={item} />)}
+        {results && results.map((item) => <RecipeItem recipe={item} key={item.id}/>)}
       </Row>
     </Container>
   );

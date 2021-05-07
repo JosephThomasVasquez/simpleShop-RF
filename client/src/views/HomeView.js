@@ -93,8 +93,8 @@ const HomeView = () => {
           </Col>
         </Row>
         <Row>
-          <Col sm={4} md={3} lg={2}>
-            <RecipeList searchRecipes={recipesList} />
+          <Col sm={12} md={12} lg={12}>
+            <RecipeList searchRecipes={recipesList} searchTerm={searchTerm}/>
           </Col>
         </Row>
       </Container>

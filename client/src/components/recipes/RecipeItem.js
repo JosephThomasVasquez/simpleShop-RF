@@ -1,12 +1,10 @@
 import React from "react";
-import { Col, Button, Card } from "react-bootstrap";
+import { Row, Col, Button, Card } from "react-bootstrap";
 const RecipeItem = ({ recipe }) => {
-  console.log(recipe);
 
   return (
-    <Col>
-      <Card></Card>
-      <Card style={{ width: "18rem" }}>
+    <Col md={4}>
+      <Card className="shadow m-2">
         <Card.Img variant="top" src={recipe.image} />
         <Card.Body>
           <Card.Title>{recipe.title}</Card.Title>
