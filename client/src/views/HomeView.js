@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import RecipeList from "../components/recipes/RecipeList";
@@ -6,12 +6,44 @@ import { useAuth } from "../contexts/AuthContext";
 
 const HomeView = () => {
   const { currentUser } = useAuth();
+  const [recipesList, setRecipesList] = useState([]);
+
+  // Search Recipes from Spoonacular API
+  const getRecipes = async () => {
+    await fetch(
+      "https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=e60a67731a434f1e82adafaab14cdfc7",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          // "x-rapidapi-key": "e60a67731a434f1e82adafaab14cdfc7",
+          // "Access-Control-Allow-Origin": "*",
+        },
+      }
+    )
+      .then((response) => {
+        // console.log("recipes response", response.json());
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setRecipesList(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   // Search submit methods
   const handleSearch = (e) => {
     e.preventDefault();
     console.log(e.target);
+
+    getRecipes();
+
   };
+
+  
 
   return (
     <div>
@@ -51,7 +83,7 @@ const HomeView = () => {
         </Row>
         <Row>
           <Col sm={4} md={3} lg={2}>
-            <RecipeList />
+            <RecipeList searchRecipes={recipesList} />
           </Col>
         </Row>
       </Container>
