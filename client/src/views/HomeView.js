@@ -7,31 +7,40 @@ import { useAuth } from "../contexts/AuthContext";
 const HomeView = () => {
   const { currentUser } = useAuth();
   const [recipesList, setRecipesList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setSearchTerm(value);
+  };
 
   // Search Recipes from Spoonacular API
   const getRecipes = async () => {
-    await fetch(
-      "https://api.spoonacular.com/recipes/complexSearch?query=pasta&apiKey=e60a67731a434f1e82adafaab14cdfc7",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          // "x-rapidapi-key": "e60a67731a434f1e82adafaab14cdfc7",
-          // "Access-Control-Allow-Origin": "*",
-        },
-      }
-    )
-      .then((response) => {
-        // console.log("recipes response", response.json());
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setRecipesList(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    if (searchTerm) {
+      await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&apiKey=e60a67731a434f1e82adafaab14cdfc7`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            // "x-rapidapi-key": "e60a67731a434f1e82adafaab14cdfc7",
+            // "Access-Control-Allow-Origin": "*",
+          },
+        }
+      )
+        .then((response) => {
+          // console.log("recipes response", response.json());
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          setRecipesList(data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   };
 
   // Search submit methods
@@ -40,10 +49,7 @@ const HomeView = () => {
     console.log(e.target);
 
     getRecipes();
-
   };
-
-  
 
   return (
     <div>
@@ -74,7 +80,12 @@ const HomeView = () => {
           </Col>
           <Col sm={8} md={8} lg={8}>
             <Form inline>
-              <Form.Control type="text" placeholder="Search" className="" />
+              <Form.Control
+                type="text"
+                placeholder="Search"
+                className=""
+                onChange={handleChange}
+              />
               <Button type="submit" onClick={handleSearch}>
                 <i className="fas fa-search"></i>
               </Button>
