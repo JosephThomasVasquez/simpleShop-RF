@@ -17,53 +17,30 @@ const HomeView = () => {
 
   // Search Recipes from Spoonacular API
   const getRecipes = async () => {
-    // if (searchTerm) {
-    //   await fetch(
-    //     `https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&apiKey=e60a67731a434f1e82adafaab14cdfc7`,
-    //     {
-    //       method: "GET",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         // "x-rapidapi-key": "e60a67731a434f1e82adafaab14cdfc7",
-    //         // "Access-Control-Allow-Origin": "*",
-    //       },
-    //     }
-    //   )
-    //     .then((response) => {
-    //       // console.log("recipes response", response.json());
-    //       return response.json();
-    //     })
-    //     .then((data) => {
-    //       console.log(data);
-    //       setRecipesList(data);
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    // }
-
-    await fetch(
-      `https://api.edamam.com/search?q=chicken&app_id=${process.env.REACT_APP_EDAMAM_API_ID}&app_key=${process.env.REACT_APP_EDAMAM_API_KEY}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          // "x-rapidapi-key":
-          //   "ee39c6bef3f066b2b6322ba81d22625d",
-        },
-      }
-    )
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((data) => {
-        console.log("data", data);
-        setRecipesList(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    if (searchTerm) {
+      await fetch(
+        `https://api.edamam.com/search?q=${searchTerm}&app_id=${process.env.REACT_APP_EDAMAM_API_ID}&app_key=${process.env.REACT_APP_EDAMAM_API_KEY}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            // "x-rapidapi-key":
+            //   "ee39c6bef3f066b2b6322ba81d22625d",
+          },
+        }
+      )
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((data) => {
+          console.log("data", data);
+          setRecipesList(data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
   };
 
   // Search submit methods
