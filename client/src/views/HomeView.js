@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import RecipeList from "../components/recipes/RecipeList";
 import { useAuth } from "../contexts/AuthContext";
+import RecentShoppingLists from "../components/shopList/RecentShoppingLists";
 
 const HomeView = () => {
   const { currentUser } = useAuth();
@@ -70,6 +71,9 @@ const HomeView = () => {
           </Row>
         </Container>
       )}
+      <Container className="py-4 my-4 bg-white shadow">
+        <RecentShoppingLists />
+      </Container>
       <Container className="py-4 my-4 bg-white shadow">
         <Row>
           <Col sm={4} md={3} lg={2}>
