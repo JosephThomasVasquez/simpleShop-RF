@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const RecipeItem = ({ recipe }) => {
   return (
-    <Col md={4}>
+    <Col md={6} lg={4} xl={4}>
       <Card className="shadow m-2">
         <Card.Img className="recipe-item-img" variant="top" src={recipe.image} />
         <Card.Body className="p-2">
