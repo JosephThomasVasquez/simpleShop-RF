@@ -1,5 +1,7 @@
 import React from "react";
 import { Row, Col, Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 const RecipeItem = ({ recipe }) => {
   return (
     <Col md={4}>
@@ -11,9 +13,13 @@ const RecipeItem = ({ recipe }) => {
           {recipe.dietLabels.length > 0 ? (
             <Card.Text>Diet: {recipe.dietLabels}</Card.Text>
           ) : (
-            <Card.Text>{' '}</Card.Text>
+            <Card.Text> </Card.Text>
           )}
-          <Button variant="secondary" className="gradient-buttons">View Recipe</Button>
+          <Link to="/">
+            <Button variant="secondary" className="gradient-buttons">
+              View Recipe
+            </Button>
+          </Link>
         </Card.Body>
       </Card>
     </Col>
