@@ -9,9 +9,9 @@ const RecipeItem = ({ recipe }) => {
         <Card.Img variant="top" src={recipe.image} />
         <Card.Body>
           <Card.Title>{recipe.label}</Card.Title>
-          <Card.Text>Cal. {Math.floor(recipe.calories)}</Card.Text>
+          <Card.Text className="m-0">Cal. {Math.floor(recipe.calories)}</Card.Text>
           {recipe.dietLabels.length > 0 ? (
-            <Card.Text>Diet: {recipe.dietLabels}</Card.Text>
+            <Card.Text className="m-0 mb-2">Diet: {recipe.dietLabels}</Card.Text>
           ) : (
             <Card.Text> </Card.Text>
           )}
