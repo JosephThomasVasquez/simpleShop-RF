@@ -167,3 +167,10 @@ ul {
 .profile-displayname {
   color: #fc7a57;
 }
+
+
+/* RECIPE STYLING */
+.recipe-item-img {
+  height: 16em;
+  object-fit: cover;
+}

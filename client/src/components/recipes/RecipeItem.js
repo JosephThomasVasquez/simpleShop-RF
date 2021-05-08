@@ -6,7 +6,7 @@ const RecipeItem = ({ recipe }) => {
   return (
     <Col md={4}>
       <Card className="shadow m-2">
-        <Card.Img variant="top" src={recipe.image} />
+        <Card.Img className="recipe-item-img" variant="top" src={recipe.image} />
         <Card.Body>
           <Card.Title>{recipe.label}</Card.Title>
           <Card.Text className="m-0">Cal. {Math.floor(recipe.calories)}</Card.Text>
