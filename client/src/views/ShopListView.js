@@ -77,7 +77,7 @@ const ShopListView = () => {
 
   return (
     <div>
-      <Container>
+      <Container className="bg-white mt-4 pb-5">
         <h1 className="pt-5">Shopping List</h1>
         <Row>
           <Col md={6}>
@@ -117,11 +117,11 @@ const ShopListView = () => {
           </Col>
           <Col md={6}>
             <ShoppingList listTitle={title} listItems={shopItemsList} />
-            Item: {JSON.stringify(item)}
+            {/* Item: {JSON.stringify(item)} */}
           </Col>
-          <Col md={12} style={{ color: "white" }}>
+          {/* <Col md={12} style={{ color: "white" }}>
             shopItemsList: {JSON.stringify(shopItemsList)}
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </div>
