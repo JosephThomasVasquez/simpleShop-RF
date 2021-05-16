@@ -82,7 +82,7 @@ const ShopListView = () => {
         <Row>
           <Col md={12}>
             <Form onSubmit={handleAddItem}>
-              <Form.Group>
+              <Form.Group className="pb-2">
                 <Form.Label>
                   <span className="form-label-color">Title your List</span>
                 </Form.Label>
@@ -93,15 +93,16 @@ const ShopListView = () => {
                   onChange={handleChange}
                   value={title}
                 />
+                <Button
+                  variant="primary"
+                  type="button"
+                  className="gradient-buttons mt-2"
+                >
+                  Update Title
+                </Button>
               </Form.Group>
-              <Button
-                variant="primary"
-                type="button"
-                className="gradient-buttons"
-              >
-                Update Title
-              </Button>
-              <Form.Group>
+
+              <Form.Group className="pb-2">
                 <Form.Label>
                   <span className="form-label-color">Add items here:</span>
                 </Form.Label>
@@ -112,14 +113,14 @@ const ShopListView = () => {
                   onChange={handleChange}
                   value={item}
                 />
+                <Button
+                  variant="primary"
+                  type="submit"
+                  className="gradient-buttons mt-2"
+                >
+                  Add Item
+                </Button>
               </Form.Group>
-              <Button
-                variant="primary"
-                type="submit"
-                className="gradient-buttons"
-              >
-                Add Item
-              </Button>
             </Form>
           </Col>
           <Col md={12}>
