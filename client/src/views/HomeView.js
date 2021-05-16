@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import RecipeList from "../components/recipes/RecipeList";
@@ -7,7 +7,7 @@ import RecentShoppingLists from "../components/shopList/RecentShoppingLists";
 
 const HomeView = () => {
   const { currentUser } = useAuth();
-  const [recipesList, setRecipesList] = useState([]);
+  const [recipesList, setRecipesList] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = (e) => {
@@ -41,6 +41,12 @@ const HomeView = () => {
         });
     }
   };
+
+  useEffect(() => {
+    if (recipesList.length >= 1) {
+      console.log("recipes List", recipesList);
+    }
+  }, []);
 
   // Search submit methods
   const handleSearch = (e) => {
@@ -101,7 +107,7 @@ const HomeView = () => {
         </Row>
         <Row>
           <Col sm={12} md={12} lg={12}>
-            <Button>Load more</Button>
+            {recipesList.length >= 1 && <Button>Load more</Button>}
           </Col>
         </Row>
       </Container>
