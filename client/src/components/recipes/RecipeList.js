@@ -9,7 +9,7 @@ const RecipeList = ({ searchRecipes, searchTerm }) => {
   return (
     <Container fluid>
       <Row className="my-2">
-        <h5>{hits ? `Search results for: ${searchTerm}` : "Ey Yo!"}</h5>
+        <h5>{hits ? `Search results for: ${searchTerm}` : null}</h5>
       </Row>
       <Row>
         {hits && hits.map((item) => <RecipeItem recipe={item.recipe} key={item.recipe.url}/>)}
