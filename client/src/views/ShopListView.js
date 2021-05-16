@@ -94,6 +94,13 @@ const ShopListView = () => {
                   value={title}
                 />
               </Form.Group>
+              <Button
+                variant="primary"
+                type="button"
+                className="gradient-buttons"
+              >
+                Update Title
+              </Button>
               <Form.Group>
                 <Form.Label>
                   <span className="form-label-color">Add items here:</span>
