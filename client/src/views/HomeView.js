@@ -99,6 +99,11 @@ const HomeView = () => {
             <RecipeList searchRecipes={recipesList} searchTerm={searchTerm} />
           </Col>
         </Row>
+        <Row>
+          <Col sm={12} md={12} lg={12}>
+            <Button>Load more</Button>
+          </Col>
+        </Row>
       </Container>
     </div>
   );
