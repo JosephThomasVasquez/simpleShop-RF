@@ -35,7 +35,7 @@ const ProfileView = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log("name/value:", name, value);
+    // console.log("name/value:", name, value);
   };
 
   const handleUpdateProfile = (e) => {};

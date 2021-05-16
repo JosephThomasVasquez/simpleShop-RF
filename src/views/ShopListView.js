@@ -33,8 +33,6 @@ const ShopListView = () => {
 
   // Add item as a firestore document to the collection
   const updateShopList = async (item) => {
-    console.log("item:", item);
-
     const ref = await appFirestore
       .collection("users")
       .doc(currentUser.uid)
@@ -60,9 +58,6 @@ const ShopListView = () => {
     if (title === "" || title === undefined) {
       setTitle("Shopping List");
     }
-
-    console.log("shopItemsList:", shopItemsList);
-    console.log("title:", title);
 
     const data = {
       name: item,
