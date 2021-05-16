@@ -23,15 +23,15 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@main
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@main
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
+    - run: npm ci
     - run: npm run build
     - name: Archive Build
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@main
       with:
         name: build
         path: build
@@ -40,9 +40,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@main
     - name: Download Build
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@main
       with:
         name: build
         path: build
@@ -51,6 +51,6 @@ jobs:
       with:
         args: deploy --only hosting
       env:
-        FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
     
     
