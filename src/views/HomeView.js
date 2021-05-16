@@ -29,11 +29,9 @@ const HomeView = () => {
         }
       )
         .then((response) => {
-          console.log(response);
           return response.json();
         })
         .then((data) => {
-          console.log("data", data);
           setRecipesList(data);
         })
         .catch((err) => {
@@ -51,8 +49,6 @@ const HomeView = () => {
   // Search submit methods
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log(e.target);
-
     getRecipes();
   };
 
