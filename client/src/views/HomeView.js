@@ -25,8 +25,6 @@ const HomeView = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            // "x-rapidapi-key":
-            //   "ee39c6bef3f066b2b6322ba81d22625d",
           },
         }
       )
