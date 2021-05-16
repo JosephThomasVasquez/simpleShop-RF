@@ -7,7 +7,8 @@ React &amp; Firebase Shopping List App
 ## Features
 * Sign Up with email & password
 * Login with email & password, or Google Account
-* Can save shoppingLists to Firestore
+* Can create/update/delete shoppingLists to Firestore
+* Search Recipes from Edmam API
 
 ## Packages
 * firebase | **8.3.3**
