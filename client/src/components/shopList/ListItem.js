@@ -36,7 +36,7 @@ const ListItem = ({ item }) => {
     }
   };
   return (
-    <Container fluid>
+    <Container fluid="lg">
       <Row>
         <Col md={1} xs={1}>
           <i

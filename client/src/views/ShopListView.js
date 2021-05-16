@@ -80,7 +80,7 @@ const ShopListView = () => {
       <Container className="bg-white mt-4 pb-5">
         <h1 className="pt-5">Shopping List</h1>
         <Row>
-          <Col md={6}>
+          <Col md={12}>
             <Form onSubmit={handleAddItem}>
               <Form.Group>
                 <Form.Label>
@@ -115,7 +115,7 @@ const ShopListView = () => {
               </Button>
             </Form>
           </Col>
-          <Col md={6}>
+          <Col md={12}>
             <ShoppingList listTitle={title} listItems={shopItemsList} />
             {/* Item: {JSON.stringify(item)} */}
           </Col>
