@@ -52,6 +52,16 @@ const ShopListView = () => {
     }
   };
 
+  const handleUpdateTitle = async () => {
+    const ref = await appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("shoppingLists")
+      .doc(title);
+
+    return ref.set({ title: title });
+  };
+
   const handleAddItem = (e) => {
     e.preventDefault();
 
