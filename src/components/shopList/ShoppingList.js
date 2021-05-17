@@ -39,13 +39,13 @@ const ShoppingList = ({ listTitle, listItems }) => {
               <Container fluid="md">
                 <Row className="mt-4">
                   <Col md={6} sm={3} className="p-0">
-                    <Button
+                    {/* <Button
                       variant="primary"
                       className="gradient-buttons"
                       onClick={handleSaveList}
                     >
                       Save
-                    </Button>
+                    </Button> */}
                   </Col>
                   <Col md={6} sm={3} className="p-0">
                     <button

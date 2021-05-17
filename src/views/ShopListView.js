@@ -102,6 +102,7 @@ const ShopListView = () => {
                   variant="primary"
                   type="button"
                   className="gradient-buttons mt-2"
+                  onClick={handleUpdateTitle}
                 >
                   Update Title
                 </Button>
