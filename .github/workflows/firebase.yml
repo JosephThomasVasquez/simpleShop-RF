@@ -9,9 +9,11 @@ on:
   pull_request:
     branches: [ main ]
 
+  workflow_dispatch:
+  
 jobs:
   build:
-
+    name: Build
     runs-on: ubuntu-latest
 
     strategy:
@@ -32,6 +34,7 @@ jobs:
       with:
         name: build
         path: build
+        
   deploy:
     name: Deploy
     needs: build
