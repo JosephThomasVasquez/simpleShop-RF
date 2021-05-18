@@ -11,6 +11,25 @@ const ShopListView = () => {
   const [title, setTitle] = useState("Shopping List");
   const [shopItemsList, setShopItemsList] = useState([]);
 
+  const getDocTitleRef = async () => {
+    const getRef = appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("shoppingLists")
+      .doc("Shopping List");
+
+    const doc = await getRef.get();
+
+    if (!doc.exists) {
+      return null;
+    } else {
+      setTitle(doc.data().title);
+      console.log("Document data:", doc.data().title);
+    }
+
+    // return doc.data();
+  };
+
   // Get snapshot update from docs
   useEffect(() => {
     const unsubscribe = appFirestore
@@ -57,7 +76,7 @@ const ShopListView = () => {
       .collection("users")
       .doc(currentUser.uid)
       .collection("shoppingLists")
-      .doc(title);
+      .doc("Shopping List");
 
     return ref.set({ title: title });
   };
