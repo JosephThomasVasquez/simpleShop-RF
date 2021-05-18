@@ -59,7 +59,7 @@ const ShopListView = () => {
       .collection("users")
       .doc(currentUser.uid)
       .collection("shoppingLists")
-      .doc(title)
+      .doc("Shopping List")
       .collection("items");
 
     return ref.add({ ...item, createdAt: timestamp });
