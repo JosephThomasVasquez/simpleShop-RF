@@ -72,9 +72,6 @@ const HomeView = () => {
         </Container>
       )}
       <Container className="py-4 my-4 bg-white shadow">
-        <RecentShoppingLists />
-      </Container>
-      <Container className="py-4 my-4 bg-white shadow">
         <Row>
           <Col sm={4} md={3} lg={2}>
             <h4> Need Ideas?</h4>
