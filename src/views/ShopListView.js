@@ -32,6 +32,9 @@ const ShopListView = () => {
 
   // Get snapshot update from docs
   useEffect(() => {
+
+    getDocTitleRef();
+
     const unsubscribe = appFirestore
       .collection("users")
       .doc(currentUser.uid)
