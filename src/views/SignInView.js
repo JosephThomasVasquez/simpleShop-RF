@@ -20,8 +20,9 @@ const SignInView = () => {
 
     try {
       setSignInError("");
-      await signIn(emailRef.current.value, passwordRef.current.value);
-      await history.push("/shoppinglist");
+      await signIn(emailRef.current.value, passwordRef.current.value).then(
+        await history.push("/shoppinglist")
+      );
     } catch (error) {
       setSignInError("Error logging in. Please check email and password.");
       console.log("Login Error", signInError);
@@ -31,7 +32,6 @@ const SignInView = () => {
   return (
     <div>
       <Container className="py-4 my-4 bg-white shadow">
-        
         <Row>
           <Col>
             <h1>Sign In</h1>

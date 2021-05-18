@@ -53,7 +53,7 @@ const ListItem = ({ item }) => {
             }
           ></i>
         </Col>
-        <Col md={8} xs={7} onClick={handleToggleComplete}>
+        <Col md={8} xs={6} onClick={handleToggleComplete}>
           <div
             className="item-li"
             name={item.id}
@@ -82,7 +82,7 @@ const ListItem = ({ item }) => {
                 : { textDecoration: "none", transition: "all 1s" }
             }
           >
-            qty: {item.quantity}
+            {item.quantity > 1 && `qty: ${item.quantity}`}
           </span>
         </Col>
         <Col md={1} xs={1}>

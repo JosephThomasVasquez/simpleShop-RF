@@ -11,17 +11,12 @@ export const useUserShopList = () => {
 
 const ShopListProvider = ({ children }) => {
   const { currentUser } = useAuth();
-//   const [shopListDocs, setShopListDocs] = useState({
-//     title: "Shopping List",
-//     items: ["Bacon", "Eggs", "Burger Buns", "Milk", "Parmesan Cheese"],
-//   });
 
-  console.log("currentUser", currentUser);
+  // console.log("currentUser", currentUser);
+
   // Get the shoppingList doc from Firestore from the current User Id
   const getShopList = () => {
     const ref = appFirestore.collection("users");
-
-    console.log("ref", ref);
 
     ref.onSnapshot((querySnapshot) => {
       let items = [];
