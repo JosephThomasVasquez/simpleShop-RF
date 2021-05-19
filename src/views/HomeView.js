@@ -7,7 +7,7 @@ import RecentShoppingLists from "../components/shopList/RecentShoppingLists";
 
 const HomeView = () => {
   const { currentUser } = useAuth();
-  const [recipesList, setRecipesList] = useState({});
+  const [recipesList, setRecipesList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [loadItems, setLoadItems] = useState({
     skip: 0,
@@ -36,12 +36,17 @@ const HomeView = () => {
           return response.json();
         })
         .then((data) => {
-          setRecipesList(data);
-          console.log("data", data);
-          setLoadItems({
-            skip: loadItems.skip + 10,
-            limit: loadItems.limit + 10,
-          });
+          if (data) {
+            const items = data.hits;
+            console.log("items", items);
+
+            setRecipesList((recipesList) => recipesList.concat(items));
+            console.log("data", recipesList);
+            setLoadItems({
+              skip: loadItems.skip + 10,
+              limit: loadItems.limit + 10,
+            });
+          }
         })
         .catch((err) => {
           console.error(err);
@@ -109,7 +114,9 @@ const HomeView = () => {
         </Row>
         <Row>
           <Col sm={12} md={12} lg={12}>
-            {recipesList.length >= 1 && <Button>Load more</Button>}
+            {recipesList.length >= 1 && (
+              <Button onClick={getRecipes}>Load more</Button>
+            )}
           </Col>
         </Row>
       </Container>
