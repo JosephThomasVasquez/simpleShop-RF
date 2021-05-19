@@ -1,5 +1,6 @@
 # Shopping List App
 React &amp; Firebase Shopping List App
+___
 ![Image of Recipe List View](https://github.com/JosephThomasVasquez/Portfolio-2020/blob/master/images/SimpleShop1.jpg)
 ![Image of Shopping List View](https://github.com/JosephThomasVasquez/Portfolio-2020/blob/master/images/SimpleShop2.jpg)
 
@@ -12,6 +13,7 @@ React &amp; Firebase Shopping List App
     * The "Load More" button will fetch 10 additional recipes each time and will display and update the state.
 * Responsive design for mobile, tablets, Desktops, to large displays
 
+___
 ## Packages
 * firebase | **8.3.3**
 * react | **17.0.2**
