@@ -30,9 +30,26 @@ const ShopListView = () => {
     // return doc.data();
   };
 
+  // Add item as a firestore document to the collection
+  const updateShopList = async (item) => {
+    const ref = await appFirestore
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("shoppingLists")
+      .doc("Shopping List")
+      .collection("items");
+
+    const snapshotSize = await ref.get().then((snapshot) => {
+      return snapshot.size;
+    });
+
+    if (snapshotSize < 15) {
+      return ref.add({ ...item, createdAt: timestamp });
+    }
+  };
+
   // Get snapshot update from docs
   useEffect(() => {
-
     getDocTitleRef();
 
     const unsubscribe = appFirestore
@@ -52,18 +69,6 @@ const ShopListView = () => {
 
     return () => unsubscribe();
   }, []);
-
-  // Add item as a firestore document to the collection
-  const updateShopList = async (item) => {
-    const ref = await appFirestore
-      .collection("users")
-      .doc(currentUser.uid)
-      .collection("shoppingLists")
-      .doc("Shopping List")
-      .collection("items");
-
-    return ref.add({ ...item, createdAt: timestamp });
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
