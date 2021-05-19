@@ -112,10 +112,10 @@ const HomeView = () => {
             <RecipeList searchRecipes={recipesList} searchTerm={searchTerm} />
           </Col>
         </Row>
-        <Row>
+        <Row className="text-center">
           <Col sm={12} md={12} lg={12}>
             {recipesList.length >= 1 && (
-              <Button onClick={getRecipes}>Load more</Button>
+              <Button size="lg" block className="mt-4" onClick={getRecipes}>Load more</Button>
             )}
           </Col>
         </Row>
