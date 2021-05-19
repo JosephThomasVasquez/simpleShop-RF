@@ -9,6 +9,8 @@ React &amp; Firebase Shopping List App
 * Can save shoppingLists to Firestore
 * Can create/update/delete shoppingLists to Firestore
 * Search Recipes from Edmam API
+    * The "Load More" button will fetch 10 additional recipes each time and will display and update the state.
+* Responsive design for mobile, tablets, Desktops, to large displays
 
 ## Packages
 * firebase | **8.3.3**
