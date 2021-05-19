@@ -9,6 +9,10 @@ const HomeView = () => {
   const { currentUser } = useAuth();
   const [recipesList, setRecipesList] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
+  const [loadItems, setLoadItems] = useState({
+    skip: 0,
+    limit: 10,
+  });
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -20,7 +24,7 @@ const HomeView = () => {
   const getRecipes = async () => {
     if (searchTerm) {
       await fetch(
-        `https://api.edamam.com/search?q=${searchTerm}&app_id=${process.env.REACT_APP_EDAMAM_API_ID}&app_key=${process.env.REACT_APP_EDAMAM_API_KEY}`,
+        `https://api.edamam.com/search?q=${searchTerm}&app_id=${process.env.REACT_APP_EDAMAM_API_ID}&app_key=${process.env.REACT_APP_EDAMAM_API_KEY}&from=${loadItems.skip}&to=${loadItems.limit}`,
         {
           method: "GET",
           headers: {
@@ -33,6 +37,11 @@ const HomeView = () => {
         })
         .then((data) => {
           setRecipesList(data);
+          console.log("data", data);
+          setLoadItems({
+            skip: loadItems.skip + 10,
+            limit: loadItems.limit + 10,
+          });
         })
         .catch((err) => {
           console.error(err);
