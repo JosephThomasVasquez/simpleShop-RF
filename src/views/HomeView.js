@@ -16,7 +16,7 @@ const HomeView = () => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    const { name, value } = e.target;
+    const { value } = e.target;
     setSearchTerm(value);
   };
 
@@ -41,7 +41,6 @@ const HomeView = () => {
             console.log("items", items);
 
             setRecipesList((recipesList) => recipesList.concat(items));
-            console.log("data", recipesList);
             setLoadItems({
               skip: loadItems.skip + 10,
               limit: loadItems.limit + 10,
