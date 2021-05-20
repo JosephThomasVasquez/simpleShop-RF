@@ -14,6 +14,7 @@ const RecipeDetailsView = ({ location }) => {
     totalNutrients,
     image,
     ingredients,
+    url,
   } = recipe;
 
   const nutrients = Object.entries(totalNutrients);
@@ -27,11 +28,16 @@ const RecipeDetailsView = ({ location }) => {
     <Container className="bg-white mt-4 p-4 pb-5 shadow">
       <h1 className="text-primary">{label}</h1>
       <Row className="pb-4">
-        <Col lg={2} md={2} sm={2}>
+        <Col lg={12} md={12} sm={12}>
           {dishType}
         </Col>
-        <Col lg={2} md={2} sm={2} className="text-primary">
+        <Col lg={12} md={12} sm={12} className="text-secondary">
           Calories: {calories}
+        </Col>
+        <Col lg={12} md={12} sm={12} className="text-primary font-weight-bold">
+          <a href={url} target="_blank">
+            <i className="fas fa-external-link-alt"></i> Go to Full Recipe
+          </a>
         </Col>
       </Row>
       <Row>
