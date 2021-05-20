@@ -26,13 +26,13 @@ const RecipeDetailsView = ({ location }) => {
 
   return (
     <Container className="bg-white mt-4 p-4 pb-5 shadow">
-      <h1 className="text-primary">{label}</h1>
+      <h2 className="text-primary">{label}</h2>
       <Row className="pb-4">
         <Col lg={12} md={12} sm={12}>
           {dishType}
         </Col>
         <Col lg={12} md={12} sm={12} className="text-secondary">
-          Calories: {calories}
+          Calories: {Math.floor(calories)}
         </Col>
         <Col lg={12} md={12} sm={12} className="text-primary font-weight-bold">
           <a href={url} target="_blank">
