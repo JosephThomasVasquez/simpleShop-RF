@@ -34,9 +34,16 @@ const RecipeDetailsView = ({ location }) => {
         <Col lg={12} md={12} sm={12} className="font-italic">
           Calories: {Math.floor(calories)}
         </Col>
-        <Col lg={12} md={12} sm={12} className="text-primary font-weight-bold">
+        <Col
+          lg={12}
+          md={12}
+          sm={12}
+          className="text-primary font-weight-bold mt-4"
+        >
           <a href={url} target="_blank">
-            <i className="fas fa-external-link-alt"></i> Go to Full Recipe
+            <h5>
+              <i className="fas fa-external-link-alt"></i> Go to Full Recipe
+            </h5>
           </a>
         </Col>
       </Row>
