@@ -168,9 +168,17 @@ ul {
   color: #fc7a57;
 }
 
-
 /* RECIPE STYLING */
 .recipe-item-img {
   height: 16em;
   object-fit: cover;
+}
+
+ul {
+  list-style: none;
+}
+
+li::before {
+  content: "• ";
+  color: rgba(252, 122, 87, 1);
 }
