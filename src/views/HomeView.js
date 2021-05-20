@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import RecipeList from "../components/recipes/RecipeList";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -113,7 +114,9 @@ const HomeView = () => {
         <Row className="text-center">
           <Col sm={12} md={12} lg={12}>
             {recipesList.length >= 1 && (
-              <Button size="lg" block className="mt-4" onClick={getRecipes}>Load more</Button>
+              <Button size="lg" block className="mt-4" onClick={getRecipes}>
+                Load more
+              </Button>
             )}
           </Col>
         </Row>
