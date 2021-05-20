@@ -28,10 +28,10 @@ const RecipeDetailsView = ({ location }) => {
     <Container className="bg-white mt-4 p-4 pb-5 shadow">
       <h2 className="text-primary">{label}</h2>
       <Row className="pb-4">
-        <Col lg={12} md={12} sm={12}>
+        <Col lg={12} md={12} sm={12} className="text-capitalize text-secondary">
           {dishType}
         </Col>
-        <Col lg={12} md={12} sm={12} className="text-secondary">
+        <Col lg={12} md={12} sm={12} className="font-italic">
           Calories: {Math.floor(calories)}
         </Col>
         <Col lg={12} md={12} sm={12} className="text-primary font-weight-bold">
