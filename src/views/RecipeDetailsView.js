@@ -55,7 +55,9 @@ const RecipeDetailsView = ({ location }) => {
           <h3 className="text-primary">Ingredients</h3>
           <ul>
             {ingredients &&
-              ingredients.map((item) => <li key={item.text}>{item.text}</li>)}
+              ingredients.map((item, index) => (
+                <li key={item.text + index}>{item.text}</li>
+              ))}
           </ul>
         </Col>
       </Row>
