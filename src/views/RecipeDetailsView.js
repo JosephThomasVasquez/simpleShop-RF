@@ -45,10 +45,10 @@ const RecipeDetailsView = ({ location }) => {
           </ul>
         </Col>
       </Row>
-      <Row>
+      <Row className="my-5">
         <Col lg={12} md={12} sm={12}>
           <h3 className="text-primary">Nutrients</h3>
-          <ul>
+          <ul className="pl-3">
             {nutrients &&
               nutrients.map((item) => (
                 <li key={item[0]}>
