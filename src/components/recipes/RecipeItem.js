@@ -24,7 +24,15 @@ const RecipeItem = ({ recipe }) => {
           ) : (
             <Card.Text> </Card.Text>
           )}
-          <Link to="/">
+          <Link
+            to={{
+              pathname: `/recipe/${recipe.shareAs}`,
+              state: {
+                recipe: recipe,
+              },
+            }}
+            style={{ textDecoration: "none" }}
+          >
             <Button variant="secondary" className="gradient-buttons">
               View Recipe
             </Button>
