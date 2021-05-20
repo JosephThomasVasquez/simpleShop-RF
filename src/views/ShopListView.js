@@ -29,7 +29,6 @@ const ShopListView = () => {
       console.log("Document data:", doc.data().title);
     }
 
-    // return doc.data();
   };
 
   // Add item as a firestore document to the collection
