@@ -5,6 +5,7 @@ const RecipeDetailsView = ({ location }) => {
   const recipe = location.state.recipe;
 
   useEffect(() => {
+    console.log("location", location);
     console.log("recipe Data", recipe);
   }, [location]);
 

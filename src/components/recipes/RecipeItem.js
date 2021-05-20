@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import RecipesDetailsView from "../../views/RecipeDetailsView";
 
 const RecipeItem = ({ recipe }) => {
-  
+
   const recipeId = recipe.shareAs.split("/")[4];
 
   return (
@@ -29,7 +29,7 @@ const RecipeItem = ({ recipe }) => {
           )}
           <Link
             to={{
-              pathname: `/recipe/${recipe.shareAs}`,
+              pathname: `/recipe/${recipeId}`,
               state: {
                 recipe: recipe,
               },
