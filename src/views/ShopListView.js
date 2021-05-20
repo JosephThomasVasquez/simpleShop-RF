@@ -28,7 +28,6 @@ const ShopListView = () => {
       setTitle(doc.data().title);
       console.log("Document data:", doc.data().title);
     }
-
   };
 
   // Add item as a firestore document to the collection
@@ -83,8 +82,9 @@ const ShopListView = () => {
       .doc("Shopping List");
 
     if (!title || title === "" || title === undefined) {
-      return null;
+      setErrorMsg("Title cannot be empty!");
     } else {
+      setErrorMsg("");
       return ref.set({ title: title });
     }
   };
@@ -111,6 +111,7 @@ const ShopListView = () => {
     <div>
       <Container className="bg-white mt-4 pb-5">
         <h1 className="pt-5">Shopping List</h1>
+        {errorMsg && <ErrorMessage errorMsg={errorMsg} />}
         <Row>
           <Col md={12}>
             <Form onSubmit={handleAddItem}>
