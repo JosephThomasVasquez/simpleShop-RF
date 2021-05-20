@@ -35,21 +35,21 @@ const RecipeDetailsView = ({ location }) => {
         </Col>
       </Row>
       <Row>
-        <Col lg={6} md={6} sm={12}>
+        <Col lg={6} md={6} sm={12} className="pb-4">
           <img src={image} alt={label} className="shadow rounded" />
         </Col>
-        <Col lg={6} md={6} sm={12}>
+        <Col lg={6} md={6} sm={12} className="pb-4">
           <h3 className="text-primary">Ingredients</h3>
-          <ul className="pl-3">
+          <ul>
             {ingredients &&
               ingredients.map((item) => <li key={item.text}>{item.text}</li>)}
           </ul>
         </Col>
       </Row>
-      <Row className="my-5">
+      <Row>
         <Col lg={12} md={12} sm={12}>
           <h3 className="text-primary">Nutrients</h3>
-          <ul className="pl-3">
+          <ul>
             {nutrients &&
               nutrients.map((item) => (
                 <li key={item[0]}>
