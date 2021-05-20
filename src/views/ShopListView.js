@@ -39,13 +39,7 @@ const ShopListView = () => {
       .doc("Shopping List")
       .collection("items");
 
-    const snapshotSize = await ref.get().then((snapshot) => {
-      return snapshot.size;
-    });
-
-    if (snapshotSize < 15) {
-      return ref.add({ ...item, createdAt: timestamp });
-    }
+    return ref.add({ ...item, createdAt: timestamp });
   };
 
   // Get snapshot update from docs
@@ -61,6 +55,7 @@ const ShopListView = () => {
       .orderBy("createdAt")
       .onSnapshot((snapshot) => {
         const data = [];
+
         snapshot.docs.forEach((doc) => {
           data.push({ id: doc.id, ...doc.data() });
         });
@@ -158,11 +153,7 @@ const ShopListView = () => {
           </Col>
           <Col md={12}>
             <ShoppingList listTitle={title} listItems={shopItemsList} />
-            {/* Item: {JSON.stringify(item)} */}
           </Col>
-          {/* <Col md={12} style={{ color: "white" }}>
-            shopItemsList: {JSON.stringify(shopItemsList)}
-          </Col> */}
         </Row>
       </Container>
     </div>
