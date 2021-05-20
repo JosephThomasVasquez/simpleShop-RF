@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import googleLogo from "../icons/Google__G__Logo.svg.png";
-import { auth, appFirestore } from "../firebase/config";
+import { appFirestore } from "../firebase/config";
 
 const ProfileView = () => {
   const { currentUser } = useAuth();
@@ -34,7 +34,7 @@ const ProfileView = () => {
   }, []);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    // const { name, value } = e.target;
     // console.log("name/value:", name, value);
   };
 

@@ -1,10 +1,10 @@
 import React from "react";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import ListItem from "./ListItem";
 // import { useUserShopList } from "../../contexts/ShopListContext";
 
 const ShoppingList = ({ listTitle, listItems }) => {
-  const handleSaveList = () => {};
+  //const handleSaveList = () => {};
 
   return (
     <Container>

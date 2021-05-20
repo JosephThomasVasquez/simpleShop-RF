@@ -11,7 +11,7 @@ const SignUpView = () => {
 
   const [signUpError, setSignUpError] = useState("");
 
-  const { signUp, currentUser } = useAuth();
+  const { signUp } = useAuth();
 
   const handleSignUp = async (e) => {
     e.preventDefault();

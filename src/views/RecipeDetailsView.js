@@ -9,13 +9,14 @@ const RecipeDetailsView = ({ location }) => {
     calories,
     cuisineType,
     dietLabels,
-    digest,
     dishType,
     healthLabels,
+    totalNutrients,
     image,
     ingredients,
-    foodId,
   } = recipe;
+
+  const nutrients = Object.entries(totalNutrients);
 
   useEffect(() => {
     console.log("location", location);
@@ -43,6 +44,21 @@ const RecipeDetailsView = ({ location }) => {
               ingredients.map((item) => <li key={item.text}>{item.text}</li>)}
           </ul>
         </Col>
+      </Row>
+      <Row>
+        <Col lg={12} md={12} sm={12}>
+          <h3 className="text-primary">Nutrients</h3>
+          <ul>
+            {nutrients &&
+              nutrients.map((item) => (
+                <li key={item[0]}>
+                  {item[1].label}: {Math.floor(item[1].quantity)}
+                  {item[1].unit}
+                </li>
+              ))}
+          </ul>
+        </Col>
+        <Col lg={6} md={6} sm={12}></Col>
       </Row>
     </Container>
   );

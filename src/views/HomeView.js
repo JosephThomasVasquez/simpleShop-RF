@@ -3,7 +3,6 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import RecipeList from "../components/recipes/RecipeList";
 import { useAuth } from "../contexts/AuthContext";
-import RecentShoppingLists from "../components/shopList/RecentShoppingLists";
 
 const HomeView = () => {
   const { currentUser } = useAuth();
