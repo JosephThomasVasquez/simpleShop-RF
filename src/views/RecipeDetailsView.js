@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
 const RecipeDetailsView = ({ location }) => {
   const recipe = location.state.recipe;
 
-  console.log('recipe Data', recipe);
+  useEffect(() => {
+    console.log("recipe Data", recipe);
+  }, [location]);
 
   return (
     <Container>

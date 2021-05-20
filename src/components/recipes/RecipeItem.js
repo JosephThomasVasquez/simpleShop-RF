@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import RecipesDetailsView from "../../views/RecipeDetailsView";
 
 const RecipeItem = ({ recipe }) => {
+  
+  const recipeId = recipe.shareAs.split("/")[4];
+
   return (
     <Col md={6} lg={4} xl={4}>
       <Card className="shadow m-2">
