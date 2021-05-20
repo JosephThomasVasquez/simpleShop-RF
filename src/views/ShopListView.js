@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import ShoppingList from "../components/shopList/ShoppingList";
 import { useAuth } from "../contexts/AuthContext";
 import { appFirestore, timestamp } from "../firebase/config";
+import ErrorMessage from "../components/ErrorMessage";
 
 const ShopListView = () => {
   const { currentUser } = useAuth();
@@ -10,6 +11,7 @@ const ShopListView = () => {
   const [item, setItem] = useState("");
   const [title, setTitle] = useState("Shopping List");
   const [shopItemsList, setShopItemsList] = useState([]);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const getDocTitleRef = async () => {
     const getRef = appFirestore
