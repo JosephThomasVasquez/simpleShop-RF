@@ -39,7 +39,8 @@ const RecipeDetailsView = ({ location }) => {
           <img src={image} alt={label} className="shadow rounded" />
         </Col>
         <Col lg={6} md={6} sm={12}>
-          <ul>
+          <h3 className="text-primary">Ingredients</h3>
+          <ul className="pl-3">
             {ingredients &&
               ingredients.map((item) => <li key={item.text}>{item.text}</li>)}
           </ul>
