@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Row } from "react-bootstrap";
 import RecipeItem from "./RecipeItem";
 
@@ -6,7 +6,11 @@ const RecipeList = ({ searchRecipes, searchTerm }) => {
   return (
     <Container fluid>
       <Row className="my-2">
-        <h5>{searchRecipes.length >= 1 ? `Search results for: ${searchTerm}` : null}</h5>
+        <h5>
+          {searchRecipes.length >= 1
+            ? `Search results for: ${searchTerm}`
+            : null}
+        </h5>
       </Row>
       <Row>
         {searchRecipes &&

@@ -1,10 +1,8 @@
 import React from "react";
-import { Row, Col, Button, Card } from "react-bootstrap";
+import { Col, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import RecipesDetailsView from "../../views/RecipeDetailsView";
 
 const RecipeItem = ({ recipe }) => {
-
   const recipeId = recipe.shareAs.split("/")[4];
 
   return (

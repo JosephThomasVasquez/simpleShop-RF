@@ -14,6 +14,7 @@ const RecipeDetailsView = ({ location }) => {
     healthLabels,
     image,
     ingredients,
+    foodId,
   } = recipe;
 
   useEffect(() => {
@@ -38,7 +39,8 @@ const RecipeDetailsView = ({ location }) => {
         </Col>
         <Col lg={6} md={6} sm={12}>
           <ul>
-            {ingredients && ingredients.map((item) => <li>{item.text}</li>)}
+            {ingredients &&
+              ingredients.map((item) => <li key={item.text}>{item.text}</li>)}
           </ul>
         </Col>
       </Row>
