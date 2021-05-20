@@ -11,6 +11,7 @@ import SignInView from "./views/SignInView";
 import SignUpView from "./views/SignUpView";
 import ShopListView from "./views/ShopListView";
 import ProfileView from "./views/ProfileView";
+import RecipeDetailsView from "./views/RecipeDetailsView";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={HomeView} />
+          <Route exact path="/recipe/:id" component={RecipeDetailsView} />
           <Route exact path="/signin" component={SignInView} />
           <Route exact path="/signup" component={SignUpView} />
           <ShopListProvider>
