@@ -81,7 +81,11 @@ const ShopListView = () => {
       .collection("shoppingLists")
       .doc("Shopping List");
 
-    return ref.set({ title: title });
+    if (!title || title === "" || title === undefined) {
+      return null;
+    } else {
+      return ref.set({ title: title });
+    }
   };
 
   const handleAddItem = (e) => {
