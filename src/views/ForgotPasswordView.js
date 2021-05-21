@@ -9,9 +9,6 @@ const ForgotPasswordView = () => {
 
   const [emailError, setEmailError] = useState("");
 
-  const { signIn } = useAuth();
-  const history = useHistory();
-
   const handleForgotPasswordSubmit = async (e) => {
     e.preventDefault();
 
