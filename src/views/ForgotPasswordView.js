@@ -1,10 +1,8 @@
 import React, { useState, useRef } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import { signInWithGoogle } from "../firebase/config";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import ErrorMessage from "../components/ErrorMessage";
-import googleLogo from "../icons/Google__G__Logo.svg.png";
 
 const ForgotPasswordView = () => {
   const emailRef = useRef();
