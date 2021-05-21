@@ -90,6 +90,9 @@ const SignInView = () => {
                 <Link to="/signup" className="mr-3 ml-auto">
                   Need an account?
                 </Link>
+                <Link to="/forgotpassword" className="mr-3 ml-auto">
+                  Forgot Password?
+                </Link>
               </Row>
             </Form>
           </Col>
