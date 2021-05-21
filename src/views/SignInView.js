@@ -66,33 +66,37 @@ const SignInView = () => {
                   ref={passwordRef}
                 />
               </Form.Group>
-              <Row className="ml-auto">
-                <Button
-                  variant="primary"
-                  type="submit"
-                  className="gradient-buttons"
-                >
-                  Sign In
-                </Button>
-                <Button
-                  type="button"
-                  className="ml-2 google-btn gradient-buttons"
-                  onClick={signInWithGoogle}
-                >
-                  <img
-                    src={googleLogo}
-                    width="24px"
-                    alt="Google Sign In Button"
-                    className="img-google-btn"
-                  />
-                  Sign In with Google
-                </Button>
-                <Link to="/signup" className="mr-3 ml-auto">
-                  Need an account?
-                </Link>
-                <Link to="/forgotpassword" className="mr-3 ml-auto">
-                  Forgot Password?
-                </Link>
+              <Row className="">
+                <Col lg={8} md={12} sm={12}>
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    className="gradient-buttons"
+                  >
+                    Sign In
+                  </Button>
+                  <Button
+                    type="button"
+                    className="ml-2 google-btn gradient-buttons"
+                    onClick={signInWithGoogle}
+                  >
+                    <img
+                      src={googleLogo}
+                      width="24px"
+                      alt="Google Sign In Button"
+                      className="img-google-btn mr-2"
+                    />
+                    Sign In with Google
+                  </Button>
+                </Col>
+
+                <Col md={2} sm={6} className="text-center mt-2">
+                  <Link to="/forgotpassword">Forgot Password?</Link>
+                </Col>
+
+                <Col md={2} sm={6} className="text-center mt-2">
+                  <Link to="/signup">Need an account?</Link>
+                </Col>
               </Row>
             </Form>
           </Col>
