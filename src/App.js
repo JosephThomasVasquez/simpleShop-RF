@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import HomeView from "./views/HomeView";
 import SignInView from "./views/SignInView";
 import SignUpView from "./views/SignUpView";
+import ForgotPasswordView from "./views/ForgotPasswordView";
 import ShopListView from "./views/ShopListView";
 import ProfileView from "./views/ProfileView";
 import RecipeDetailsView from "./views/RecipeDetailsView";
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/recipe/:id" component={RecipeDetailsView} />
           <Route exact path="/signin" component={SignInView} />
           <Route exact path="/signup" component={SignUpView} />
+          <Route exact path="/forgotpassword" component={ForgotPasswordView} />
           <ShopListProvider>
             <AuthRoute exact path="/shoppinglist" component={ShopListView} />
             <AuthRoute exact path="/profile" component={ProfileView} />
