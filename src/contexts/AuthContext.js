@@ -41,10 +41,12 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  // Sign In using Firebase with email and password
   const signIn = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
   };
 
+  // Sign out the current User
   const signOut = () => {
     console.log("User signed out");
     return auth.signOut();

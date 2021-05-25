@@ -7,6 +7,8 @@ import ErrorMessage from "../components/ErrorMessage";
 const ForgotPasswordView = () => {
   const emailRef = useRef();
 
+  // const { currentUser } = useAuth();
+
   const [emailError, setEmailError] = useState("");
 
   const handleForgotPasswordSubmit = async (e) => {
