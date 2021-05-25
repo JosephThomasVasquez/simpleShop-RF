@@ -52,6 +52,18 @@ const AuthProvider = ({ children }) => {
     return auth.signOut();
   };
 
+  // Reset Password request
+  const resetPasswordEmail = async (email) => {
+    if (email !== "") {
+      await auth
+        .sendPasswordResetEmail(email)
+        .then(() => {})
+        .catch((error) => {
+          console.log("Reset Password Email Error", error);
+        });
+    }
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
