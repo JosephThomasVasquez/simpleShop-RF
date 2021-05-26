@@ -7,7 +7,7 @@ import ErrorMessage from "../components/ErrorMessage";
 const ForgotPasswordView = () => {
   const emailRef = useRef();
 
-  // const { currentUser } = useAuth();
+  const { resetPasswordEmail } = useAuth();
 
   const [emailError, setEmailError] = useState("");
 
@@ -16,6 +16,7 @@ const ForgotPasswordView = () => {
 
     try {
       setEmailError("");
+      resetPasswordEmail(emailRef.current.value);
     } catch (error) {
       setEmailError("Invalid email address. Please check email.");
       console.log("Email Error", emailError);
