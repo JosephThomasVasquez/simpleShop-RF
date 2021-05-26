@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
         .doc(cred.user.uid)
         .collection("shoppingLists")
         .doc("Shopping List")
-        .set({ items: [] });
+        .set({ title: "Shopping List" });
     });
   };
 
