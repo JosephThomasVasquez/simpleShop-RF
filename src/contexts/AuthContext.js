@@ -57,7 +57,11 @@ const AuthProvider = ({ children }) => {
     if (email !== "") {
       await auth
         .sendPasswordResetEmail(email)
-        .then(() => {})
+        .then(() => {
+          return console.log(
+            "The Reset Password link was sent to the email address provided it exists on the users account."
+          );
+        })
         .catch((error) => {
           console.log("Reset Password Email Error", error);
         });
@@ -73,7 +77,7 @@ const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const value = { currentUser, signUp, signIn, signOut };
+  const value = { currentUser, signUp, signIn, signOut, resetPasswordEmail };
 
   return (
     <AuthContext.Provider value={value}>
