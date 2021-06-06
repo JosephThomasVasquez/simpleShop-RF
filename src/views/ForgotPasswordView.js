@@ -31,6 +31,14 @@ const ForgotPasswordView = () => {
             <h1>Forgot Password</h1>
           </Col>
         </Row>
+        <Row>
+          <Col>
+            <p>
+              Enter the email used for your account and you will receive an
+              email with a link to reset your password.
+            </p>
+          </Col>
+        </Row>
         {emailError && (
           <Row>
             <Col>
@@ -39,7 +47,7 @@ const ForgotPasswordView = () => {
           </Row>
         )}
 
-        <Row className="mt-5">
+        <Row className="mt-2">
           <Col md={12}>
             <Form onSubmit={handleForgotPasswordSubmit}>
               <Form.Group id="email">
