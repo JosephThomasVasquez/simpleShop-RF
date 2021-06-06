@@ -55,7 +55,7 @@ const ForgotPasswordView = () => {
                 <Form.Control
                   type="email"
                   name="email"
-                  placeholder="email"
+                  placeholder="Email"
                   ref={emailRef}
                 />
               </Form.Group>
