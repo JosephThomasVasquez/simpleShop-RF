@@ -69,7 +69,7 @@ const HomeView = () => {
     <div>
       {!currentUser && (
         <Container className="py-4 my-4 bg-white shadow">
-          <h1>ShopList</h1>
+          <h1 className="text-primary">ShopList</h1>
           <Row>
             <Col>
               <h4>Need to make a shopping list?</h4>
