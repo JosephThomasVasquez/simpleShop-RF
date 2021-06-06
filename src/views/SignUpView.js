@@ -36,7 +36,7 @@ const SignUpView = () => {
       <Container className="py-4 my-4 bg-white shadow">
         <Row>
           <Col>
-            <h1>Sign Up</h1>
+            <h1 className="text-primary">Sign Up</h1>
           </Col>
         </Row>
         {signUpError && (
