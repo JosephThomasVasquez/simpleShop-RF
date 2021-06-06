@@ -28,7 +28,7 @@ const ForgotPasswordView = () => {
       <Container className="py-4 my-4 bg-white shadow">
         <Row>
           <Col>
-            <h1>Forgot Password</h1>
+            <h1 className="text-primary">Forgot Password</h1>
           </Col>
         </Row>
         <Row>
