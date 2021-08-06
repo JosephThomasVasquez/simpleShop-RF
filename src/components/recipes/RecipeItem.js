@@ -7,7 +7,7 @@ const RecipeItem = ({ recipe }) => {
 
   return (
     <Col md={6} lg={4} xl={4}>
-      <Card className="shadow m-2">
+      <Card className="shadow m-2 card-item">
         <Card.Img
           className="recipe-item-img"
           variant="top"

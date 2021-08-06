@@ -182,3 +182,14 @@ li::before {
   content: "• ";
   color: rgba(252, 122, 87, 1);
 }
+
+.card-item {
+  transform: scale(1);
+  transition: all 0.5s ease;
+}
+
+.card-item:hover {
+  transform: scale(1.025);
+  background: rgba(0, 155, 155, 0.2);
+  transition: all 0.5s ease;
+}
