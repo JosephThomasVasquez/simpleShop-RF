@@ -66,7 +66,7 @@ const ForgotPasswordView = () => {
                   type="submit"
                   className="gradient-buttons"
                 >
-                  Sign In
+                  Reset Password
                 </Button>
               </Row>
             </Form>
