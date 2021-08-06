@@ -1,6 +1,7 @@
 # Shopping List App
 
 React &amp; Firebase Shopping List App
+## Try it out here: [Live Project](https://simpleshop-rf.web.app/)
 
 ---
 
