@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 
 const RecipeDetailsView = ({ location }) => {
   const recipe = location.state.recipe;
 
   const history = useHistory();
 
-  console.log("History:", history);
+  const handleGoBack = () => {
+    console.log("History:", history);
+  };
 
   const {
     label,
@@ -39,9 +41,11 @@ const RecipeDetailsView = ({ location }) => {
           lg={1}
           md={1}
           sm={1}
-          className="text-capitalize text-secondary text-center p-2 mx-auto my-auto font-weight-bold shadow border-primary"
+          className="text-capitalize text-secondary"
         >
-          Back
+          <Button type="button" onClick={handleGoBack}>
+            Back
+          </Button>
         </Col>
       </Row>
       <Row className="pb-4">
