@@ -110,14 +110,25 @@ const ShopListView = () => {
   return (
     <div>
       <Container className="bg-white mt-4 pb-5">
-        <h1 className="pt-5 text-primary">Shopping List</h1>
+        <Row className="pt-5">
+          <Col lg={3} md={3} sm={3} className="pr-0">
+            <h1 className="text-primary">Shopping List</h1>
+          </Col>
+          <Col lg={9} md={9} sm={9} className="pl-0 my-auto">
+            <p className="my-auto lead font-weight-normal">
+              <em>{title}</em>
+            </p>
+          </Col>
+        </Row>
         {errorMsg && <ErrorMessage errorMsg={errorMsg} />}
         <Row>
           <Col md={12}>
             <Form onSubmit={handleAddItem}>
               <Form.Group className="pb-2">
                 <Form.Label>
-                  <span className="form-label-color text-secondary">Title your List</span>
+                  <span className="form-label-color text-secondary">
+                    Title your List
+                  </span>
                 </Form.Label>
                 <Form.Control
                   type="text"
@@ -138,7 +149,9 @@ const ShopListView = () => {
 
               <Form.Group className="pb-2">
                 <Form.Label>
-                  <span className="form-label-color text-secondary">Add items here:</span>
+                  <span className="form-label-color text-secondary">
+                    Add items here:
+                  </span>
                 </Form.Label>
                 <Form.Control
                   type="text"
