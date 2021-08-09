@@ -1,8 +1,13 @@
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 
 const RecipeDetailsView = ({ location }) => {
   const recipe = location.state.recipe;
+
+  const history = useHistory();
+
+  console.log("History:", history);
 
   const {
     label,
@@ -26,11 +31,24 @@ const RecipeDetailsView = ({ location }) => {
 
   return (
     <Container className="bg-white mt-4 p-4 pb-5 shadow">
-      <h2 className="text-primary">{label}</h2>
+      <Row>
+        <Col lg={11} md={11} sm={11} className="text-capitalize text-secondary">
+          <h2 className="text-primary">{label}</h2>
+        </Col>
+        <Col
+          lg={1}
+          md={1}
+          sm={1}
+          className="text-capitalize text-secondary text-center p-2 mx-auto my-auto font-weight-bold shadow border-primary"
+        >
+          Back
+        </Col>
+      </Row>
       <Row className="pb-4">
-        <Col lg={12} md={12} sm={12} className="text-capitalize text-secondary">
+        <Col lg={10} md={10} sm={10} className="text-capitalize text-secondary">
           {dishType}
         </Col>
+
         <Col lg={12} md={12} sm={12} className="font-italic">
           Calories: {Math.floor(calories)}
         </Col>
