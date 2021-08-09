@@ -5,7 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import RecipeList from "../components/recipes/RecipeList";
 import { useAuth } from "../contexts/AuthContext";
 
-const HomeView = () => {
+const HomeView = ({ location, history }) => {
   const { currentUser } = useAuth();
   const [recipesList, setRecipesList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -56,6 +56,8 @@ const HomeView = () => {
   useEffect(() => {
     if (recipesList.length >= 1) {
       console.log("recipes List", recipesList);
+      console.log("history", history);
+      console.log("location", location);
     }
   }, []);
 
