@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
-const RecipeDetailsView = ({ location }) => {
+const RecipeDetailsView = ({ location, history }) => {
   const recipe = location.state.recipe;
 
-  const history = useHistory();
+  const routerHistory = useHistory();
 
   const handleGoBack = () => {
-    console.log("History:", history);
+    console.log("History:", routerHistory);
+    history.push("/");
   };
 
   const {
@@ -28,6 +29,7 @@ const RecipeDetailsView = ({ location }) => {
 
   useEffect(() => {
     console.log("location", location);
+    console.log("history", history);
     console.log("recipe Data", recipe);
   }, [location]);
 
@@ -37,12 +39,7 @@ const RecipeDetailsView = ({ location }) => {
         <Col lg={11} md={11} sm={11} className="text-capitalize text-secondary">
           <h2 className="text-primary">{label}</h2>
         </Col>
-        <Col
-          lg={1}
-          md={1}
-          sm={1}
-          className="text-capitalize text-secondary"
-        >
+        <Col lg={1} md={1} sm={1} className="text-capitalize text-secondary">
           <Button type="button" onClick={handleGoBack}>
             Back
           </Button>
