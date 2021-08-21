@@ -19,7 +19,7 @@ React &amp; Firebase Shopping List App
   - The "Load More" button will fetch 10 additional recipes each time and will display and update the state.
   - Viewing a recipe displays the relevant recipe data.
 
-  - _`Note: The Edmam API doesn't store the recipe directions data so I have added an external link inside the recipe details view/page which will direct the user to the original page with directions.`_
+  - _`Note: The Edmam API doesn't store the recipe instructions data so I have added an external link inside the recipe details view/page which will direct the user to the original page with the full recipe instructions.`_
 
 - Responsive design for mobile, tablets, desktops, and larger displays
 
